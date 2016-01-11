@@ -1,0 +1,15 @@
+.h files are the public interface class
+	- variables/ properties
+	- method definitions
+
+.m files are the implementation file
+	- any private variables/ properties
+	- all method implementations
+
+	*** Never import a .m file!!!****
+
+static or class methods start with a +
+
+Interface  Builder.h : 
+	.xib
+	.storyboard
