@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hellow World! Welcome to ITP 342. It's going to be a great semester." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="05h-N1-0wV">
+                                <rect key="frame" x="20" y="28" width="560" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113" id="1mi-Fj-66n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-po-lbs">
+                                <rect key="frame" x="20" y="149" width="560" height="443"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.70747041980000003" blue="0.43131906050000002" alpha="0.77213541669999997" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="05h-N1-0wV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2xH-nx-Jb4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vCf-po-lbs" secondAttribute="bottom" constant="8" symbolic="YES" id="ANP-u0-ayV"/>
+                            <constraint firstItem="vCf-po-lbs" firstAttribute="top" secondItem="05h-N1-0wV" secondAttribute="bottom" constant="8" symbolic="YES" id="OPp-ga-d5h"/>
+                            <constraint firstItem="05h-N1-0wV" firstAttribute="leading" secondItem="vCf-po-lbs" secondAttribute="leading" id="TqO-VC-qHb"/>
+                            <constraint firstItem="vCf-po-lbs" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="YNr-Oq-iAA"/>
+                            <constraint firstItem="05h-N1-0wV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="hvZ-Bb-6aE"/>
+                            <constraint firstItem="vCf-po-lbs" firstAttribute="trailing" secondItem="05h-N1-0wV" secondAttribute="trailing" id="pQa-VV-j0e"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="356"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon" width="60" height="60"/>
+    </resources>
+</document>

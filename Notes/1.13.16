@@ -1,0 +1,8 @@
+- The # of colons in a method signature/definition = the #of arguements
+
+Class Methods - 
+//define method
++ (void) setSchool: (NSString *) school;
+
+//call method
+[Person setSchool: @"USC"];
