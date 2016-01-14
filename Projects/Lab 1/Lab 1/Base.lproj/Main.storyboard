@@ -21,37 +21,40 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jerry Webb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0q-Hq-ei4">
                                 <rect key="frame" x="20" y="20" width="560" height="71"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="71" id="VjF-G5-VfO"/>
+                                    <constraint firstAttribute="height" constant="71" id="ikD-WR-k6K"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="30"/>
                                 <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profilePic" translatesAutoresizingMaskIntoConstraints="NO" id="WbU-zO-z9a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePic" translatesAutoresizingMaskIntoConstraints="NO" id="WbU-zO-z9a">
                                 <rect key="frame" x="20" y="99" width="560" height="199"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="UeP-xW-HFt"/>
-                                    <constraint firstAttribute="height" constant="199" id="i6U-FT-FxQ"/>
+                                    <constraint firstAttribute="height" constant="199" id="Jdp-CE-q1y"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yKq-qN-Vbz">
-                                <rect key="frame" x="20" y="306" width="560" height="274"/>
-                                <string key="text">I am majoring in Computer Engineering. I really enjoyed learning to program for Android, and I am interested in also learning iOS so that I can develope for both platforms. I also recently switched from Android to Apple, and I want to also create apps for my new phone.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kOd-DL-3Ic">
+                                <rect key="frame" x="126" y="306" width="349" height="274"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="349" id="uja-w1-UKm"/>
+                                </constraints>
+                                <string key="text">I am a computer engineering major. I took an Android programming class, and I am also interested in  learning iOS so that I can develope for both platforms. </string>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="24"/>
-                                <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.91714743589743586" green="0.68952216346408823" blue="0.017081737658204078" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0CA-JL-Sgx"/>
-                            <constraint firstItem="WbU-zO-z9a" firstAttribute="centerX" secondItem="yKq-qN-Vbz" secondAttribute="centerX" id="Fj7-Ex-bkk"/>
-                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LCk-XL-lkD"/>
-                            <constraint firstAttribute="bottom" secondItem="yKq-qN-Vbz" secondAttribute="bottom" constant="20" symbolic="YES" id="Oet-0B-tSy"/>
-                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="RcE-7g-wkl"/>
-                            <constraint firstItem="yKq-qN-Vbz" firstAttribute="top" secondItem="WbU-zO-z9a" secondAttribute="bottom" constant="8" symbolic="YES" id="dYB-g0-gQ6"/>
-                            <constraint firstItem="WbU-zO-z9a" firstAttribute="top" secondItem="i0q-Hq-ei4" secondAttribute="bottom" constant="8" symbolic="YES" id="ki5-lP-qkp"/>
-                            <constraint firstItem="WbU-zO-z9a" firstAttribute="centerX" secondItem="i0q-Hq-ei4" secondAttribute="centerX" id="ymO-9F-36u"/>
+                            <constraint firstItem="WbU-zO-z9a" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="516-Qa-ZaL"/>
+                            <constraint firstItem="WbU-zO-z9a" firstAttribute="top" secondItem="i0q-Hq-ei4" secondAttribute="bottom" constant="8" symbolic="YES" id="6LZ-wv-TVl"/>
+                            <constraint firstItem="kOd-DL-3Ic" firstAttribute="top" secondItem="WbU-zO-z9a" secondAttribute="bottom" constant="8" symbolic="YES" id="9Bp-bG-YSO"/>
+                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LLc-pJ-8gt"/>
+                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ojc-iP-xPv"/>
+                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="leading" secondItem="WbU-zO-z9a" secondAttribute="leading" id="TfI-We-gMZ"/>
+                            <constraint firstItem="i0q-Hq-ei4" firstAttribute="trailing" secondItem="WbU-zO-z9a" secondAttribute="trailing" id="jd5-gz-Xic"/>
+                            <constraint firstItem="kOd-DL-3Ic" firstAttribute="centerX" secondItem="WbU-zO-z9a" secondAttribute="centerX" id="qi9-Ey-Yx8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kOd-DL-3Ic" secondAttribute="bottom" constant="113" id="xUc-K6-rsD"/>
                         </constraints>
                     </view>
                 </viewController>
