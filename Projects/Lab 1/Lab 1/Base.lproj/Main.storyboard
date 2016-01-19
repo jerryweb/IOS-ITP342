@@ -40,7 +40,7 @@
                                 </constraints>
                                 <string key="text">I am a computer engineering major. I took an Android programming class, and I am also interested in  learning iOS so that I can develope for both platforms. </string>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
