@@ -1,9 +1,9 @@
 //
 //  ViewController.m
-//  Lab 1
+//  AutoLayout
 //
-//  Created by Jerry Webb on 1/13/16.
-//  Copyright © 2016 Jerry. All rights reserved.
+//  Created by LJ on 1/20/16.
+//  Copyright © 2016 Jerry Webb. All rights reserved.
 //
 
 #import "ViewController.h"

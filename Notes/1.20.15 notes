@@ -1,0 +1,8 @@
+1.20.15 notes
+
+@property(strong, nonatomic) NSString* name;
+//@property will create getters and setters
+
+//get = name
+//set = setName
+

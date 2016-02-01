@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eho-JR-FRa" userLabel="ViewTopLeft">
+                                <rect key="frame" x="20" y="20" width="270" height="270"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="Zqo-DB-CXt"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbC-8a-3tx" userLabel="ViewBottom">
+                                <rect key="frame" x="20" y="310" width="560" height="270"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="wHR-3r-pqk"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-FM-v8g" userLabel="ViewTopRight">
+                                <rect key="frame" x="310" y="20" width="270" height="270"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="lbC-8a-3tx" secondAttribute="bottom" constant="20" id="5rX-b0-ocP"/>
+                            <constraint firstItem="lbC-8a-3tx" firstAttribute="top" secondItem="Eho-JR-FRa" secondAttribute="bottom" constant="20" id="AiE-1d-7rN"/>
+                            <constraint firstItem="0Xx-FM-v8g" firstAttribute="width" secondItem="Eho-JR-FRa" secondAttribute="width" id="FoI-oJ-dkk"/>
+                            <constraint firstItem="Eho-JR-FRa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HgE-Ma-h7b"/>
+                            <constraint firstItem="lbC-8a-3tx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LPD-mC-cs6"/>
+                            <constraint firstItem="0Xx-FM-v8g" firstAttribute="leading" secondItem="Eho-JR-FRa" secondAttribute="trailing" constant="20" id="eXK-H6-Iw0"/>
+                            <constraint firstItem="lbC-8a-3tx" firstAttribute="top" secondItem="0Xx-FM-v8g" secondAttribute="bottom" constant="20" id="fX9-6J-kbu"/>
+                            <constraint firstItem="lbC-8a-3tx" firstAttribute="height" secondItem="Eho-JR-FRa" secondAttribute="height" id="n5E-jx-VLo"/>
+                            <constraint firstItem="0Xx-FM-v8g" firstAttribute="height" secondItem="Eho-JR-FRa" secondAttribute="height" id="pGL-72-TTs"/>
+                            <constraint firstItem="Eho-JR-FRa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="q2Q-rb-5qJ"/>
+                            <constraint firstItem="0Xx-FM-v8g" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qAH-Z7-hcC"/>
+                            <constraint firstItem="0Xx-FM-v8g" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="vYY-kb-hIN"/>
+                            <constraint firstItem="lbC-8a-3tx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="zFw-Iq-OAl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="356"/>
+        </scene>
+    </scenes>
+</document>
