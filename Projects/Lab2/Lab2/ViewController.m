@@ -27,9 +27,12 @@
     if([self.nameTextField isFirstResponder] && [touch view] != self.nameTextField){
         [self.nameTextField resignFirstResponder];
     }
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (IBAction)dismissKeyboard:(id)sender {
+    // sender will be the TextField
+    // resignFirstResponder will dismisst the keyboard
     [sender resignFirstResponder];
 }
 
@@ -38,10 +41,14 @@
     NSInteger nameLength = self.nameTextField.text.length;
     
     if (nameLength > 0) {
-        [self.messageLabel setText:[@"Pirates are terrible... that's why there aren't any new Pirates of the Caribbean movies. Shame on you " stringByAppendingString:(self.nameTextField.text)]];
+//        [self.messageLabel setText:[@"Pirates are terrible... that's why there aren't any new Pirates of the Caribbean movies. Shame on you " stringByAppendingString:(self.nameTextField.text)]];
+        self.messageLabel.text =  [NSString stringWithFormat:@" %@, Pirates are terrible... that's why there aren't any new Pirates of the Caribbean movies. Shame on you", self.nameTextField.text];
     }
+    
     else{
-        [self.messageLabel setText:@"Please enter a valid name"];
+        self.messageLabel.text =  [NSString stringWithFormat:@"Pirates are terrible... that's why there aren't any new Pirates of the Caribbean movies. Shame on you"];
+
+//        [self.messageLabel setText:@"Please enter a valid name"];
     }
     
     
@@ -53,7 +60,9 @@
         [self.messageLabel setText:[@"Ninjas are dope... just ask Naruto! Good job " stringByAppendingString:(self.nameTextField.text)]];
     }
     else{
-        [self.messageLabel setText:@"Please enter a valid name"];
+        self.messageLabel.text =  [NSString stringWithFormat:@"Ninjas are dope... just ask Naruto! Good job"];
+
+//        [self.messageLabel setText:@"Please enter a valid name"];
     }
 }
 
