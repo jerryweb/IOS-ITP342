@@ -47,6 +47,40 @@
 
 }
 
+// Animations
+- (void) fadeInQuestion: (NSString *) question {
+    self.questionLabel.alpha = 0;
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.questionLabel.alpha = 1;
+        self.questionLabel.text = question;
+
+    }];
+}
+
+- (void) displayFlashcard: (NSString *) question {
+    [UIView animateWithDuration:1.0
+                     animations:^{
+        self.questionLabel.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self fadeInQuestion: question];
+    }];
+}
+
+- (void) animateFlashcard:(NSString *) question {
+    self.questionLabel.text = question;
+    
+    if(self.questionLabel.textColor == UIColor.whiteColor){
+        self.questionLabel.textColor = UIColor.blackColor;
+    }
+    else {
+        self.questionLabel.textColor = UIColor.whiteColor;
+    }
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.questionLabel.alpha = 1;
+    }];
+}
 
 - (BOOL) canBecomeFirstResponder {
     return YES;
@@ -61,7 +95,8 @@
 - (void) motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (motion == UIEventSubtypeMotionShake){
         NSDictionary *flashcard = [self.model randomFlashcard];
-        self.questionLabel.text = flashcard[kQuestionKey];
+        [self fadeInQuestion:flashcard[kQuestionKey]];
+//        self.questionLabel.text = flashcard[kQuestionKey];
     }
 }
 
@@ -73,22 +108,36 @@
 
 - (void) singleTapRecognized: (UITapGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model randomFlashcard];
-    self.questionLabel.text = flashcard[kQuestionKey];
+//    self.questionLabel.text = flashcard[kQuestionKey];
+    [self fadeInQuestion:flashcard[kQuestionKey]];
 }
 
 - (void) swipeRightRecognized: (UISwipeGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model nextFlashcard];
-    self.questionLabel.text = flashcard[kQuestionKey];
+    //    self.questionLabel.text = flashcard[kQuestionKey];    [self fadeInQuestion:flashcard[kQuestionKey]];
+    [self fadeInQuestion:flashcard[kQuestionKey]];
+
 }
 
 - (void) swipeLeftRecognized: (UISwipeGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model prevFlashcard];
-    self.questionLabel.text = flashcard[kQuestionKey];
+//    self.questionLabel.text = flashcard[kQuestionKey];
+    [self fadeInQuestion:flashcard[kQuestionKey]];
+
 }
 
 - (void) doubleTapRecognized: (UITapGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model currentFlashcard];
-    self.questionLabel.text = flashcard[kAnswerKey];
+//    self.questionLabel.text = flashcard[kAnswerKey];
+    
+    self.questionLabel.alpha = 0;
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.questionLabel.alpha = 1;
+        [self animateFlashcard:flashcard[kAnswerKey]];
+//        self.questionLabel.text = question;
+        
+    }];
 }
 
 @end
