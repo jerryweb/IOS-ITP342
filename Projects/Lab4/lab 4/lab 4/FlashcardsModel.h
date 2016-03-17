@@ -17,14 +17,19 @@ static NSString * const kAnswerKey = @"answer";
 // public methods
 + (instancetype) sharedModel;
 - (NSDictionary *) randomFlashcard;
+- (NSDictionary *) currentFlashcard;
 - (NSUInteger) numberOfFlashcards;
 - (NSDictionary *) flashcardAtIndex: (NSUInteger) index;
 - (void) removeFlashcardAtIndex: (NSUInteger) index;
+
 - (void) insertFlashcard: (NSDictionary *) flashcard;
+
 - (void) insertFlashcard: (NSString *) question
                   answer: (NSString *) answer;
+
 - (void) insertFlashcard: (NSDictionary *) flashcard
                  atIndex: (NSUInteger) index;
+
 - (void) insertFlashcard: (NSString *) question
                   answer: (NSString *) answer
                  atIndex: (NSUInteger) index;

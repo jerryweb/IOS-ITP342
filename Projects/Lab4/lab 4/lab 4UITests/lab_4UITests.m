@@ -7,8 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "FlashcardsModel.h"
 
 @interface lab_4UITests : XCTestCase
+
+@property (strong, nonatomic) FlashcardsModel *model;
 
 @end
 

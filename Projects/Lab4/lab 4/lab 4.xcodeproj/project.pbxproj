@@ -108,11 +108,10 @@
 		2A361ADA1C9791A90092FF4E /* lab 4 */ = {
 			isa = PBXGroup;
 			children = (
+				2AA0B3C31C9A63AA00DCAD20 /* Controller */,
 				2A361B0F1C9792180092FF4E /* Model */,
 				2A361ADE1C9791A90092FF4E /* AppDelegate.h */,
 				2A361ADF1C9791A90092FF4E /* AppDelegate.m */,
-				2A361AE11C9791A90092FF4E /* ViewController.h */,
-				2A361AE21C9791A90092FF4E /* ViewController.m */,
 				2A361AE41C9791A90092FF4E /* Main.storyboard */,
 				2A361AE71C9791A90092FF4E /* Assets.xcassets */,
 				2A361AE91C9791A90092FF4E /* LaunchScreen.storyboard */,
@@ -155,6 +154,15 @@
 				2AA0B3C11C9A4ACE00DCAD20 /* FlashcardsModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		2AA0B3C31C9A63AA00DCAD20 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2A361AE11C9791A90092FF4E /* ViewController.h */,
+				2A361AE21C9791A90092FF4E /* ViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
