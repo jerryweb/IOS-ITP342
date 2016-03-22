@@ -15,6 +15,10 @@
 //@property (strong, nonatomic) AVAudioPlayer *singleAudioPlayer, *doubleAudioPlayer;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
+@property (readonly) SystemSoundID fadeInFileId;
+@property (readonly) SystemSoundID taDaFileId;
+
+
 @end
 
 @implementation ViewController
@@ -26,6 +30,19 @@
     NSDictionary *flashcard = [self.model randomFlashcard];
     self.questionLabel.text = flashcard[kQuestionKey];
     
+    NSString *fadeInFilePath = [[NSBundle mainBundle]
+                            pathForResource:@"fadein" ofType:@"wav"];
+    
+    NSString *taDaFilePath = [[NSBundle mainBundle]
+                                pathForResource:@"TaDa" ofType:@"wav"];
+    
+    NSURL *fadeInURL = [NSURL fileURLWithPath:fadeInFilePath];
+    NSURL *taDaURL = [NSURL fileURLWithPath:taDaFilePath];
+
+    
+    AudioServicesCreateSystemSoundID( (__bridge CFURLRef)fadeInURL, &_fadeInFileId);
+    AudioServicesCreateSystemSoundID( (__bridge CFURLRef)taDaURL, &_taDaFileId);
+
     
     // Add tap gestures
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapRecognized:)];
@@ -95,8 +112,13 @@
 - (void) motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (motion == UIEventSubtypeMotionShake){
         NSDictionary *flashcard = [self.model randomFlashcard];
+        
+        // Play sound
+        AudioServicesPlaySystemSound(self.fadeInFileId);
+        
         [self fadeInQuestion:flashcard[kQuestionKey]];
 //        self.questionLabel.text = flashcard[kQuestionKey];
+        
     }
 }
 
@@ -109,12 +131,16 @@
 - (void) singleTapRecognized: (UITapGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model randomFlashcard];
 //    self.questionLabel.text = flashcard[kQuestionKey];
+    // Play sound
+    AudioServicesPlaySystemSound(self.fadeInFileId);
     [self fadeInQuestion:flashcard[kQuestionKey]];
 }
 
 - (void) swipeRightRecognized: (UISwipeGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model nextFlashcard];
     //    self.questionLabel.text = flashcard[kQuestionKey];    [self fadeInQuestion:flashcard[kQuestionKey]];
+    // Play sound
+    AudioServicesPlaySystemSound(self.fadeInFileId);
     [self fadeInQuestion:flashcard[kQuestionKey]];
 
 }
@@ -122,6 +148,8 @@
 - (void) swipeLeftRecognized: (UISwipeGestureRecognizer *) recognizer{
     NSDictionary *flashcard = [self.model prevFlashcard];
 //    self.questionLabel.text = flashcard[kQuestionKey];
+    // Play sound
+    AudioServicesPlaySystemSound(self.fadeInFileId);
     [self fadeInQuestion:flashcard[kQuestionKey]];
 
 }
@@ -131,7 +159,8 @@
 //    self.questionLabel.text = flashcard[kAnswerKey];
     
     self.questionLabel.alpha = 0;
-    
+    AudioServicesPlaySystemSound(self.taDaFileId);
+
     [UIView animateWithDuration:1.0 animations:^{
         self.questionLabel.alpha = 1;
         [self animateFlashcard:flashcard[kAnswerKey]];
