@@ -34,8 +34,14 @@
     
     
     self.model = [FlashcardsModel sharedModel];
-    NSDictionary *flashcard = [self.model randomFlashcard];
-    self.questionLabel.text = flashcard[kQuestionKey];
+    if([self.model numberOfFlashcards] == 0){
+        self.questionLabel.text = @"Please create some flashcards!";
+    }
+    else{
+        NSDictionary *flashcard = [self.model randomFlashcard];
+        self.questionLabel.text = flashcard[kQuestionKey];
+    }
+
     
     NSString *fadeInFilePath = [[NSBundle mainBundle]
                             pathForResource:@"fadein" ofType:@"wav"];
@@ -118,12 +124,18 @@
 
 - (void) motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (motion == UIEventSubtypeMotionShake){
-        NSDictionary *flashcard = [self.model randomFlashcard];
         
         // Play sound
         AudioServicesPlaySystemSound(self.fadeInFileId);
         
-        [self fadeInQuestion:flashcard[kQuestionKey]];
+//        [self fadeInQuestion:flashcard[kQuestionKey]];
+        if([self.model numberOfFlashcards] > 0){
+            NSDictionary *flashcard = [self.model randomFlashcard];
+            [self fadeInQuestion:flashcard[kQuestionKey]];
+        }
+        else {
+            [self fadeInQuestion:@"There are no more flashcards."];
+        }
 //        self.questionLabel.text = flashcard[kQuestionKey];
         
     }
@@ -136,31 +148,47 @@
 
 
 - (void) singleTapRecognized: (UITapGestureRecognizer *) recognizer{
-    NSDictionary *flashcard = [self.model randomFlashcard];
 //    self.questionLabel.text = flashcard[kQuestionKey];
     // Play sound
     AudioServicesPlaySystemSound(self.fadeInFileId);
-    [self fadeInQuestion:flashcard[kQuestionKey]];
+//    [self fadeInQuestion:flashcard[kQuestionKey]];
+    if([self.model numberOfFlashcards] > 0){
+        NSDictionary *flashcard = [self.model randomFlashcard];
+        [self fadeInQuestion:flashcard[kQuestionKey]];
+    }
+    else {
+        [self fadeInQuestion:@"There are no more flashcards."];
+    }
 }
 
 - (void) swipeRightRecognized: (UISwipeGestureRecognizer *) recognizer{
-    NSDictionary *flashcard = [self.model prevFlashcard];
     // Play sound
     AudioServicesPlaySystemSound(self.fadeInFileId);
-    [self fadeInQuestion:flashcard[kQuestionKey]];
+//    [self fadeInQuestion:flashcard[kQuestionKey]];
+    if([self.model numberOfFlashcards] > 0){
+        NSDictionary *flashcard = [self.model prevFlashcard];
+        [self fadeInQuestion:flashcard[kQuestionKey]];
+    }
+    else {
+        [self fadeInQuestion:@"There are no more flashcards."];
+    }
 
 }
 
 - (void) swipeLeftRecognized: (UISwipeGestureRecognizer *) recognizer{
-    NSDictionary *flashcard = [self.model nextFlashcard];
     // Play sound
     AudioServicesPlaySystemSound(self.fadeInFileId);
-    [self fadeInQuestion:flashcard[kQuestionKey]];
+    if([self.model numberOfFlashcards] > 0){
+        NSDictionary *flashcard = [self.model nextFlashcard];
 
+        [self fadeInQuestion:flashcard[kQuestionKey]];
+    }
+    else {
+        [self fadeInQuestion:@"There are no more flashcards."];
+    }
 }
 
 - (void) doubleTapRecognized: (UITapGestureRecognizer *) recognizer{
-    NSDictionary *flashcard = [self.model currentFlashcard];
 //    self.questionLabel.text = flashcard[kAnswerKey];
     
     self.questionLabel.alpha = 0;
@@ -168,7 +196,13 @@
 
     [UIView animateWithDuration:1.0 animations:^{
         self.questionLabel.alpha = 1;
-        [self animateFlashcard:flashcard[kAnswerKey]];
+        if([self.model numberOfFlashcards] > 0){
+            NSDictionary *flashcard = [self.model currentFlashcard];
+            [self animateFlashcard:flashcard[kAnswerKey]];
+        }
+        else {
+            [self animateFlashcard:@"Please add more flashcards."];
+        }
         
     }];
 }
