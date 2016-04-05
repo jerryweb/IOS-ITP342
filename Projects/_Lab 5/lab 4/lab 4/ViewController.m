@@ -26,7 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.model = [[FlashcardsModel alloc] init];
+    
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+#endif
+    
+    
+    
+    self.model = [FlashcardsModel sharedModel];
     NSDictionary *flashcard = [self.model randomFlashcard];
     self.questionLabel.text = flashcard[kQuestionKey];
     
@@ -137,8 +144,7 @@
 }
 
 - (void) swipeRightRecognized: (UISwipeGestureRecognizer *) recognizer{
-    NSDictionary *flashcard = [self.model nextFlashcard];
-    //    self.questionLabel.text = flashcard[kQuestionKey];    [self fadeInQuestion:flashcard[kQuestionKey]];
+    NSDictionary *flashcard = [self.model prevFlashcard];
     // Play sound
     AudioServicesPlaySystemSound(self.fadeInFileId);
     [self fadeInQuestion:flashcard[kQuestionKey]];
@@ -146,8 +152,7 @@
 }
 
 - (void) swipeLeftRecognized: (UISwipeGestureRecognizer *) recognizer{
-    NSDictionary *flashcard = [self.model prevFlashcard];
-//    self.questionLabel.text = flashcard[kQuestionKey];
+    NSDictionary *flashcard = [self.model nextFlashcard];
     // Play sound
     AudioServicesPlaySystemSound(self.fadeInFileId);
     [self fadeInQuestion:flashcard[kQuestionKey]];
@@ -164,7 +169,6 @@
     [UIView animateWithDuration:1.0 animations:^{
         self.questionLabel.alpha = 1;
         [self animateFlashcard:flashcard[kAnswerKey]];
-//        self.questionLabel.text = question;
         
     }];
 }

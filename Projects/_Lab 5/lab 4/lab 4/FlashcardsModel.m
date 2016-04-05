@@ -7,11 +7,13 @@
 //
 
 #import "FlashcardsModel.h"
+static NSString *const kFlashcardsPList = @"Flashcards.list";
 
 @interface FlashcardsModel()
 
 @property (strong, nonatomic) NSMutableArray *flashcards;
 @property (nonatomic) NSInteger currentIndex;
+@property (strong, nonatomic) NSString *filePath;
 
 @end
 
@@ -32,6 +34,17 @@
 {
     self = [super init];
     if (self) {
+
+        NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        _filePath = [documentsDirectory stringByAppendingPathComponent:kFlashcardsPList];
+        
+        _flashcards = [NSMutableArray arrayWithContentsOfFile:_filePath];
+        
+        if(!self.flashcards){
+
         NSDictionary *flashcard1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"How many licks does it take to get to the center of a Tootsie Pop?", kQuestionKey, @"Have you ever actually tried it? Way too many!", kAnswerKey, nil];
         
         NSDictionary *flashcard2 = [[NSDictionary alloc] initWithObjectsAndKeys: @"What is Professor Gregory's favorite color?", kQuestionKey, @"BLUE YAY!!!!", kAnswerKey, nil];
@@ -43,14 +56,14 @@
         NSDictionary *flashcard5 = [[NSDictionary alloc] initWithObjectsAndKeys: @"Will the iPhone 7 have a headphone jack?", kQuestionKey, @"It better!", kAnswerKey, nil];
         
         _flashcards = [[NSMutableArray alloc] initWithObjects: flashcard1, flashcard2, flashcard3, flashcard4, flashcard5, nil];
-        
+        }
     }
     return self;
 }
 
 -(NSUInteger) numberOfFlashcards{
-
-    return _flashcards.count;
+//    NSLog(@"the num of cards direct is: %li", (long)[self.flashcards count]);
+    return [self.flashcards count];
 }
 
 - (NSDictionary *) currentFlashcard{
@@ -62,10 +75,8 @@
     
     NSUInteger index = arc4random_uniform([self numberOfFlashcards] -1);
 //rand() % [self numberOfFlashcards];
-    
-//    NSLog(@"index is %lu", (unsigned long)rand());
-    if(index == self.currentIndex){
-        if(self.currentIndex < self.numberOfFlashcards){
+        if(index == self.currentIndex){
+        if(self.currentIndex < [self numberOfFlashcards]){
             index = self.currentIndex +1;
         }
         else {
@@ -89,17 +100,21 @@
 
 - (void) removeFlashcardAtIndex: (NSUInteger) index {
     // check index
-    if(index >= self.flashcards.count || index < 0){
+    NSUInteger zero = 0;
+
+    if(index >= self.flashcards.count || index < zero){
         return;
     }
     
     [self.flashcards removeObjectAtIndex: index];
+    [self save];
 }
 
 
 - (void) insertFlashcard:(NSDictionary *)flashcard {
 
     [self.flashcards addObject: flashcard];
+    [self save];
 }
 
 - (void) insertFlashcard: (NSString *) question
@@ -112,9 +127,9 @@
     
 - (void) insertFlashcard: (NSDictionary *) flashcard
                 atIndex: (NSUInteger) index{
-    
+    NSUInteger zero = 0;
     //if it is outside the index add it to the end
-    if(index >= self.flashcards.count || index < 0){
+    if(index >= self.flashcards.count || index < zero){
         [self insertFlashcard: flashcard];
     }
     
@@ -131,21 +146,30 @@
 }
 
 - (NSDictionary *) nextFlashcard{
-    if(self.currentIndex == self.numberOfFlashcards - 1){
-        return self.flashcards[0];
+    if(self.currentIndex == ([self numberOfFlashcards] - 1)){
+        self.currentIndex = 0;
+        return self.flashcards[self.currentIndex];
     }
     else {
-        return self.flashcards[self.currentIndex + 1];
+        self.currentIndex = self.currentIndex + 1;
+        return self.flashcards[self.currentIndex];
     }
 }
 
 - (NSDictionary *) prevFlashcard{
     if(self.currentIndex == 0){
-        return self.flashcards[self.numberOfFlashcards - 1];
+        self.currentIndex = [self numberOfFlashcards] - 1;
+//        NSLog(@"the current index and num of cards is: %li", (long)self.currentIndex );
+        return self.flashcards[self.currentIndex];
     }
     else{
-        return self.flashcards[self.currentIndex - 1];
+        self.currentIndex = self.currentIndex - 1;
+        return self.flashcards[self.currentIndex];
     }
+}
+
+- (void) save {
+    [self.flashcards writeToFile:self.filePath atomically:YES];
 }
 
 @end

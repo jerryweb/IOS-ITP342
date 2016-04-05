@@ -42,14 +42,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.model.numberOfFlashcards;
+    return [self.model numberOfFlashcards];
 }
 
 
 
 - (UITableViewCell *)tableView: (UITableView *) tableView
          cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"TableCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"QuestionTableCell" forIndexPath:indexPath];
     
     // Configure the cell...
     NSDictionary *flashcard = [self.model flashcardAtIndex:indexPath.row];
@@ -82,8 +82,6 @@
     
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        
-//        [self.model insertFlashcard:<#(NSDictionary *)#>];
     }
 }
 
@@ -105,18 +103,34 @@
 
 #pragma mark - Navigation
 
+
+- (IBAction)addQuote:(id)sender {
+    [self performSegueWithIdentifier:@"addSegue" sender:sender];
+}
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //     Get the new view controller using [segue destinationViewController].
 //     Pass the selected object to the new view controller.
     
-    if([segue.identifier isEqual:@"addSeque"]){
+    if([segue.identifier isEqual:@"addSegue"]){
         
         AddViewController* addVC = [segue destinationViewController];
 
         
-        addVC.labelString = @"Please enter a Question and Answer";
+        addVC.labelString = @"Please enter a Question";
         addVC.textFieldPlaceHolder = @"Answer";
+        
+        
+        [addVC setCompletion:^(NSString* textViewString, NSString* textFieldString){
+            
+            if(textViewString != nil){
+                [self.model insertFlashcard:textViewString answer:textFieldString];
+                [self.tableView reloadData];
+            }
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
     }
 }
 

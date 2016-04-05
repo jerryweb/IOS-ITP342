@@ -30,8 +30,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)dismissKeyboard:(id)sender {
+    [sender resignFirstResponder];
+}
 
-
+- (void) touchesBegan: (NSSet *) touches withEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    
+    if([self.QuestionTextView isFirstResponder] && [touch view] != self.QuestionTextView){
+        [self.QuestionTextView resignFirstResponder];
+    }
+    else if([self.AnswerTextField isFirstResponder] && [touch view] != self.AnswerTextField){
+        [self.AnswerTextField resignFirstResponder];
+    }
+    
+    [super touchesBegan:touches withEvent:event];
+}
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -52,9 +66,9 @@
 }
 
 - (IBAction)savedTouched:(id)sender {
-    
     if(self.completion){
         self.completion(self.QuestionTextView.text, self.AnswerTextField.text);
+
     }
     
     self.QuestionTextView = nil;
@@ -64,13 +78,13 @@
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     
-    if(self.completion){
-        self.completion(self.QuestionTextView.text, self.AnswerTextField.text);
-    }
-    
-    self.QuestionTextView = nil;
-    self.AnswerTextField = nil;
-    
+//    if(self.completion){
+//        self.completion(self.QuestionTextView.text, self.AnswerTextField.text);
+//    }
+//    
+//    self.QuestionTextView = nil;
+//    self.AnswerTextField = nil;
+//    
     return YES;
 }
 
