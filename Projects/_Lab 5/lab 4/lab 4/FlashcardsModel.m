@@ -73,9 +73,10 @@ static NSString *const kFlashcardsPList = @"Flashcards.list";
 
 - (NSDictionary *) randomFlashcard {
     
+    
     NSUInteger index = arc4random_uniform([self numberOfFlashcards] -1);
 //rand() % [self numberOfFlashcards];
-        if(index == self.currentIndex){
+        if(index == self.currentIndex && self.numberOfFlashcards != 1){
         if(self.currentIndex < [self numberOfFlashcards]){
             index = self.currentIndex +1;
         }
