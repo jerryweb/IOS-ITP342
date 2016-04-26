@@ -15,7 +15,10 @@
 		2A0018C91CCF04360033039C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0018C71CCF04360033039C /* LaunchScreen.storyboard */; };
 		2A0018D41CCF04360033039C /* Lab_6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018D31CCF04360033039C /* Lab_6Tests.m */; };
 		2A0018DF1CCF04360033039C /* Lab_6UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018DE1CCF04360033039C /* Lab_6UITests.m */; };
-		2A0018F01CCF06190033039C /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A0018EF1CCF06190033039C /* Property List.plist */; };
+		2A0018F01CCF06190033039C /* PropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A0018EF1CCF06190033039C /* PropertyList.plist */; };
+		2A0018F31CCF0D7E0033039C /* PlaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018F21CCF0D7E0033039C /* PlaceModel.m */; };
+		2A0018F61CCF10530033039C /* PlaceCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018F51CCF10530033039C /* PlaceCollectionViewController.m */; };
+		2A0018F91CCF12880033039C /* PlaceItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018F81CCF12880033039C /* PlaceItemCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +55,13 @@
 		2A0018DA1CCF04360033039C /* Lab 6UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lab 6UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0018DE1CCF04360033039C /* Lab_6UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lab_6UITests.m; sourceTree = "<group>"; };
 		2A0018E01CCF04360033039C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A0018EF1CCF06190033039C /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		2A0018EF1CCF06190033039C /* PropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PropertyList.plist; sourceTree = "<group>"; };
+		2A0018F11CCF0D7E0033039C /* PlaceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceModel.h; sourceTree = "<group>"; };
+		2A0018F21CCF0D7E0033039C /* PlaceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceModel.m; sourceTree = "<group>"; };
+		2A0018F41CCF10530033039C /* PlaceCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCollectionViewController.h; sourceTree = "<group>"; };
+		2A0018F51CCF10530033039C /* PlaceCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewController.m; sourceTree = "<group>"; };
+		2A0018F71CCF12880033039C /* PlaceItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceItemCollectionViewCell.h; sourceTree = "<group>"; };
+		2A0018F81CCF12880033039C /* PlaceItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceItemCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +153,8 @@
 		2A0018EC1CCF05450033039C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A0018F11CCF0D7E0033039C /* PlaceModel.h */,
+				2A0018F21CCF0D7E0033039C /* PlaceModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -151,10 +162,8 @@
 		2A0018ED1CCF054B0033039C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2A0018BF1CCF04360033039C /* ViewController.h */,
-				2A0018C01CCF04360033039C /* ViewController.m */,
 				2A0018C21CCF04360033039C /* Main.storyboard */,
-				2A0018EF1CCF06190033039C /* Property List.plist */,
+				2A0018EF1CCF06190033039C /* PropertyList.plist */,
 				2A0018C71CCF04360033039C /* LaunchScreen.storyboard */,
 			);
 			name = View;
@@ -163,6 +172,12 @@
 		2A0018EE1CCF05530033039C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2A0018BF1CCF04360033039C /* ViewController.h */,
+				2A0018C01CCF04360033039C /* ViewController.m */,
+				2A0018F41CCF10530033039C /* PlaceCollectionViewController.h */,
+				2A0018F51CCF10530033039C /* PlaceCollectionViewController.m */,
+				2A0018F71CCF12880033039C /* PlaceItemCollectionViewCell.h */,
+				2A0018F81CCF12880033039C /* PlaceItemCollectionViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -272,7 +287,7 @@
 			files = (
 				2A0018C91CCF04360033039C /* LaunchScreen.storyboard in Resources */,
 				2A0018C61CCF04360033039C /* Assets.xcassets in Resources */,
-				2A0018F01CCF06190033039C /* Property List.plist in Resources */,
+				2A0018F01CCF06190033039C /* PropertyList.plist in Resources */,
 				2A0018C41CCF04360033039C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +314,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A0018C11CCF04360033039C /* ViewController.m in Sources */,
+				2A0018F61CCF10530033039C /* PlaceCollectionViewController.m in Sources */,
+				2A0018F31CCF0D7E0033039C /* PlaceModel.m in Sources */,
+				2A0018F91CCF12880033039C /* PlaceItemCollectionViewCell.m in Sources */,
 				2A0018BE1CCF04360033039C /* AppDelegate.m in Sources */,
 				2A0018BB1CCF04360033039C /* main.m in Sources */,
 			);
