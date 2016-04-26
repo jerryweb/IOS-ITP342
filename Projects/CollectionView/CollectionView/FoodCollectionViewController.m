@@ -6,15 +6,15 @@
 //  Copyright © 2016 Jerry Webb. All rights reserved.
 //
 
-#import "CollectionViewController.h"
+#import "FoodCollectionViewController.h"
 
-@interface CollectionViewController ()
+@interface FoodCollectionViewController ()
 
 @end
 
-@implementation CollectionViewController
+@implementation FoodCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"FoodItemsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];

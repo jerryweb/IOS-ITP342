@@ -14,9 +14,10 @@
 		2A1BCB5B1CB59CCD00E91463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BCB591CB59CCD00E91463 /* LaunchScreen.storyboard */; };
 		2A1BCB661CB59CCD00E91463 /* CollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BCB651CB59CCD00E91463 /* CollectionViewTests.m */; };
 		2A1BCB711CB59CCD00E91463 /* CollectionViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BCB701CB59CCD00E91463 /* CollectionViewUITests.m */; };
-		2A1BCB821CB59E7000E91463 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BCB811CB59E7000E91463 /* CollectionViewController.m */; };
+		2A1BCB821CB59E7000E91463 /* FoodCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BCB811CB59E7000E91463 /* FoodCollectionViewController.m */; };
 		2A1BCB861CB59FB600E91463 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A1BCB851CB59FB600E91463 /* Property List.plist */; };
 		2A1BCB8A1CB5A22600E91463 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1BCB891CB5A22600E91463 /* FoodModel.m */; };
+		2A8D02691CC56E6500E99EB2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D02681CC56E6500E99EB2 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +52,13 @@
 		2A1BCB6C1CB59CCD00E91463 /* CollectionViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A1BCB701CB59CCD00E91463 /* CollectionViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewUITests.m; sourceTree = "<group>"; };
 		2A1BCB721CB59CCD00E91463 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A1BCB801CB59E7000E91463 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		2A1BCB811CB59E7000E91463 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		2A1BCB801CB59E7000E91463 /* FoodCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodCollectionViewController.h; sourceTree = "<group>"; };
+		2A1BCB811CB59E7000E91463 /* FoodCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCollectionViewController.m; sourceTree = "<group>"; };
 		2A1BCB851CB59FB600E91463 /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		2A1BCB881CB5A22600E91463 /* FoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
 		2A1BCB891CB5A22600E91463 /* FoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		2A8D02671CC56E6500E99EB2 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2A8D02681CC56E6500E99EB2 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +160,10 @@
 		2A1BCB7F1CB59E2100E91463 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2A1BCB801CB59E7000E91463 /* CollectionViewController.h */,
-				2A1BCB811CB59E7000E91463 /* CollectionViewController.m */,
+				2A8D02671CC56E6500E99EB2 /* DetailViewController.h */,
+				2A8D02681CC56E6500E99EB2 /* DetailViewController.m */,
+				2A1BCB801CB59E7000E91463 /* FoodCollectionViewController.h */,
+				2A1BCB811CB59E7000E91463 /* FoodCollectionViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -311,9 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A8D02691CC56E6500E99EB2 /* DetailViewController.m in Sources */,
 				2A1BCB501CB59CCD00E91463 /* AppDelegate.m in Sources */,
 				2A1BCB4D1CB59CCD00E91463 /* main.m in Sources */,
-				2A1BCB821CB59E7000E91463 /* CollectionViewController.m in Sources */,
+				2A1BCB821CB59E7000E91463 /* FoodCollectionViewController.m in Sources */,
 				2A1BCB8A1CB5A22600E91463 /* FoodModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +544,7 @@
 				2A1BCB771CB59CCD00E91463 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A1BCB781CB59CCD00E91463 /* Build configuration list for PBXNativeTarget "CollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +553,7 @@
 				2A1BCB7A1CB59CCD00E91463 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A1BCB7B1CB59CCD00E91463 /* Build configuration list for PBXNativeTarget "CollectionViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +562,7 @@
 				2A1BCB7D1CB59CCD00E91463 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
