@@ -105,17 +105,27 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29R-rJ-H1W" userLabel="FavoriteButton">
+                                <rect key="frame" x="426" y="20" width="154" height="95"/>
+                                <state key="normal" image="star"/>
+                                <connections>
+                                    <action selector="toggleFavorite:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vlb-4s-lx6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="29R-rJ-H1W" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="7iA-Rg-zOb"/>
                             <constraint firstItem="R8y-gC-Dl7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Si9-KY-1Mc"/>
                             <constraint firstItem="R8y-gC-Dl7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cCi-ki-TKL"/>
                             <constraint firstItem="R8y-gC-Dl7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jzv-vr-fCy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="R8y-gC-Dl7" secondAttribute="bottom" constant="20" id="nJa-h1-gKX"/>
+                            <constraint firstItem="29R-rJ-H1W" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="pJW-UV-fM0"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Question" image="question" id="fRa-fX-MPW"/>
                     <connections>
+                        <outlet property="favoriteButton" destination="29R-rJ-H1W" id="sUn-Z2-xAn"/>
                         <outlet property="questionLabel" destination="R8y-gC-Dl7" id="KQg-Xk-WCn"/>
                     </connections>
                 </viewController>
@@ -135,6 +145,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="FO8-nz-1wa"/>
                         <segue destination="FfC-6b-NJo" kind="relationship" relationship="viewControllers" id="DLZ-lI-3UW"/>
+                        <segue destination="PSb-3A-a6N" kind="relationship" relationship="viewControllers" id="iPb-bZ-okx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfM-lc-B6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,6 +197,44 @@
             </objects>
             <point key="canvasLocation" x="544" y="577"/>
         </scene>
+        <!--Favorites Table View Controller-->
+        <scene sceneID="oLo-hc-7A9">
+            <objects>
+                <tableViewController id="wnd-WB-rKZ" userLabel="Favorites Table View Controller" customClass="FavoritesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MXA-3y-wCH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteTableCell" textLabel="L4D-45-ePA" style="IBUITableViewCellStyleDefault" id="h8K-nF-h2X">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h8K-nF-h2X" id="6O3-eQ-IPk">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L4D-45-ePA">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wnd-WB-rKZ" id="Wuu-RN-0Mq"/>
+                            <outlet property="delegate" destination="wnd-WB-rKZ" id="7zq-pw-31D"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="DwT-Oe-5QA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ewi-TW-Ys4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="1292"/>
+        </scene>
         <!--Cards-->
         <scene sceneID="nH3-tX-kP8">
             <objects>
@@ -205,9 +254,30 @@
             </objects>
             <point key="canvasLocation" x="-170" y="585"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="coU-Um-2pG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PSb-3A-a6N" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="BVf-Au-Njj"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Euf-CU-CvP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wnd-WB-rKZ" kind="relationship" relationship="rootViewController" id="neO-1m-tDD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gO7-tv-ZNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="1292"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cards" width="25" height="25"/>
         <image name="question" width="25" height="25"/>
+        <image name="star" width="100" height="95"/>
     </resources>
 </document>

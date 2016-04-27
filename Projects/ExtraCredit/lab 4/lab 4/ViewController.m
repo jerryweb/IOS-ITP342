@@ -12,8 +12,9 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) FlashcardsModel *model;
-//@property (strong, nonatomic) AVAudioPlayer *singleAudioPlayer, *doubleAudioPlayer;
+
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @property (readonly) SystemSoundID fadeInFileId;
 @property (readonly) SystemSoundID taDaFileId;
@@ -27,10 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-#if TARGET_IPHONE_SIMULATOR
-    NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
-#endif
-    
+//#if TARGET_IPHONE_SIMULATOR
+//    NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+//#endif
+//    
     
     
     self.model = [FlashcardsModel sharedModel];
@@ -40,8 +41,13 @@
     else{
         NSDictionary *flashcard = [self.model randomFlashcard];
         self.questionLabel.text = flashcard[kQuestionKey];
-    }
+//        NSLog(boolValue ? @"Yes" : @"No");
 
+        if([self.model getFavoriteFlashcard:flashcard]){
+            [self.favoriteButton setImage:[UIImage imageNamed:@"starFilled.png"] forState:UIControlStateNormal];
+    
+        }
+    }
     
     NSString *fadeInFilePath = [[NSBundle mainBundle]
                             pathForResource:@"fadein" ofType:@"wav"];
@@ -77,6 +83,25 @@
 
 }
 
+// Change Favorite Button
+- (void) updateFavoriteButton: (BOOL) favoriteValue {
+    
+    if(favoriteValue){
+        [self.favoriteButton setImage:[UIImage imageNamed:@"starFilled.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.favoriteButton setImage:[UIImage imageNamed:@"star.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)toggleFavorite:(id)sender {
+     [self.model setFavoriteFlashcard];
+     NSDictionary *flashcard = [self.model currentFlashcard];
+
+     [self updateFavoriteButton:[flashcard[kFavoritedKey] boolValue]];
+
+}
+
 // Animations
 - (void) fadeInQuestion: (NSString *) question {
     self.questionLabel.alpha = 0;
@@ -86,6 +111,8 @@
         self.questionLabel.text = question;
 
     }];
+    
+    
 }
 
 - (void) displayFlashcard: (NSString *) question {
@@ -94,6 +121,7 @@
         self.questionLabel.alpha = 0;
     } completion:^(BOOL finished) {
         [self fadeInQuestion: question];
+        
     }];
 }
 
@@ -132,12 +160,12 @@
         if([self.model numberOfFlashcards] > 0){
             NSDictionary *flashcard = [self.model randomFlashcard];
             [self fadeInQuestion:flashcard[kQuestionKey]];
+            [self updateFavoriteButton:[flashcard[kFavoritedKey] boolValue]];
+
         }
         else {
             [self fadeInQuestion:@"There are no more flashcards."];
         }
-//        self.questionLabel.text = flashcard[kQuestionKey];
-        
     }
 }
 
@@ -155,6 +183,8 @@
     if([self.model numberOfFlashcards] > 0){
         NSDictionary *flashcard = [self.model randomFlashcard];
         [self fadeInQuestion:flashcard[kQuestionKey]];
+        [self updateFavoriteButton:[flashcard[kFavoritedKey] boolValue]];
+
     }
     else {
         [self fadeInQuestion:@"There are no more flashcards."];
@@ -168,6 +198,8 @@
     if([self.model numberOfFlashcards] > 0){
         NSDictionary *flashcard = [self.model prevFlashcard];
         [self fadeInQuestion:flashcard[kQuestionKey]];
+        [self updateFavoriteButton:[flashcard[kFavoritedKey] boolValue]];
+
     }
     else {
         [self fadeInQuestion:@"There are no more flashcards."];
@@ -182,6 +214,7 @@
         NSDictionary *flashcard = [self.model nextFlashcard];
 
         [self fadeInQuestion:flashcard[kQuestionKey]];
+        [self updateFavoriteButton:[flashcard[kFavoritedKey] boolValue]];
     }
     else {
         [self fadeInQuestion:@"There are no more flashcards."];
@@ -199,6 +232,7 @@
         if([self.model numberOfFlashcards] > 0){
             NSDictionary *flashcard = [self.model currentFlashcard];
             [self animateFlashcard:flashcard[kAnswerKey]];
+            [self updateFavoriteButton:[flashcard[kFavoritedKey] boolValue]];
         }
         else {
             [self animateFlashcard:@"Please add more flashcards."];

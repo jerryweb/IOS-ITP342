@@ -13,6 +13,7 @@ static NSString *const kFlashcardsPList = @"Flashcards.list";
 
 @property (strong, nonatomic) NSMutableArray *flashcards;
 @property (nonatomic) NSInteger currentIndex;
+@property (nonatomic) NSInteger numberOfFavorites;
 @property (strong, nonatomic) NSString *filePath;
 
 @end
@@ -43,20 +44,32 @@ static NSString *const kFlashcardsPList = @"Flashcards.list";
         
         _flashcards = [NSMutableArray arrayWithContentsOfFile:_filePath];
         
+        
+        self.numberOfFavorites = 0;
+
         if(!self.flashcards){
 
-        NSDictionary *flashcard1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"How many licks does it take to get to the center of a Tootsie Pop?", kQuestionKey, @"Have you ever actually tried it? Way too many!", kAnswerKey, nil];
+        NSDictionary *flashcard1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"How many licks does it take to get to the center of a Tootsie Pop?", kQuestionKey, @"Have you ever actually tried it? Way too many!", kAnswerKey, @"NO", kFavoritedKey, nil];
         
-        NSDictionary *flashcard2 = [[NSDictionary alloc] initWithObjectsAndKeys: @"What is Professor Gregory's favorite color?", kQuestionKey, @"BLUE YAY!!!!", kAnswerKey, nil];
+        NSDictionary *flashcard2 = [[NSDictionary alloc] initWithObjectsAndKeys: @"What is Professor Gregory's favorite color?", kQuestionKey, @"BLUE YAY!!!!", kAnswerKey, @"YES", kFavoritedKey, nil];
         
-        NSDictionary *flashcard3 = [[NSDictionary alloc] initWithObjectsAndKeys: @"Which is easier: Android or iOS?", kQuestionKey, @"Android. Green. Do not argue.", kAnswerKey, nil];
+        NSDictionary *flashcard3 = [[NSDictionary alloc] initWithObjectsAndKeys: @"Which is easier: Android or iOS?", kQuestionKey, @"Android. Green. Do not argue.", kAnswerKey, @"NO", kFavoritedKey, nil];
         
-        NSDictionary *flashcard4 = [[NSDictionary alloc] initWithObjectsAndKeys: @"What is the meaning of life?", kQuestionKey, @"42", kAnswerKey, nil];
+        NSDictionary *flashcard4 = [[NSDictionary alloc] initWithObjectsAndKeys: @"What is the meaning of life?", kQuestionKey, @"42", kAnswerKey, @"NO", kFavoritedKey, nil];
         
-        NSDictionary *flashcard5 = [[NSDictionary alloc] initWithObjectsAndKeys: @"Will the iPhone 7 have a headphone jack?", kQuestionKey, @"It better!", kAnswerKey, nil];
+        NSDictionary *flashcard5 = [[NSDictionary alloc] initWithObjectsAndKeys: @"Will the iPhone 7 have a headphone jack?", kQuestionKey, @"It better!", kAnswerKey, @"NO", kFavoritedKey, nil];
         
         _flashcards = [[NSMutableArray alloc] initWithObjects: flashcard1, flashcard2, flashcard3, flashcard4, flashcard5, nil];
+            
         }
+        else{
+            
+            for (int i = 0; i < [self numberOfFlashcards]; i++){
+                if(
+                self.numberOfFavorites++;
+            }
+        }
+
     }
     return self;
 }
@@ -122,7 +135,7 @@ static NSString *const kFlashcardsPList = @"Flashcards.list";
                   answer: (NSString *) answer{
     
     NSDictionary *flashcardDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                               question, kQuestionKey, answer, kAnswerKey, nil];
+                               question, kQuestionKey, answer, @"NO", kFavoritedKey, nil];
     [self insertFlashcard: flashcardDict ];
 }
     
@@ -139,7 +152,7 @@ static NSString *const kFlashcardsPList = @"Flashcards.list";
 
 - (void) insertFlashcard: (NSString *) question answer: (NSString *) answer atIndex: (NSUInteger) index{
     
-    NSDictionary *flashcardDict = [NSDictionary dictionaryWithObjectsAndKeys: question, kQuestionKey, answer, kAnswerKey, nil];
+    NSDictionary *flashcardDict = [NSDictionary dictionaryWithObjectsAndKeys: question, kQuestionKey, answer, kAnswerKey, @"NO", kFavoritedKey, nil];
 
     
     [self insertFlashcard:flashcardDict atIndex: index];
@@ -172,5 +185,31 @@ static NSString *const kFlashcardsPList = @"Flashcards.list";
 - (void) save {
     [self.flashcards writeToFile:self.filePath atomically:YES];
 }
+
+
+- (void) setFavoriteFlashcard{
+    NSDictionary * oldFlashcard = [self currentFlashcard];
+    NSInteger index = self.currentIndex;
+    [self removeFlashcardAtIndex:index];
+    BOOL favoriteValue = [oldFlashcard[kFavoritedKey] boolValue];
+//    favoriteValue = !favoriteValue;
+    NSDictionary * newFlashcard;
+    if (favoriteValue){
+         newFlashcard = [NSDictionary dictionaryWithObjectsAndKeys: oldFlashcard[kQuestionKey], kQuestionKey, oldFlashcard[kAnswerKey], kAnswerKey, @"NO", kFavoritedKey, nil];
+        self.numberOfFavorites--;
+    }
+    else{
+        newFlashcard = [NSDictionary dictionaryWithObjectsAndKeys: oldFlashcard[kQuestionKey], kQuestionKey, oldFlashcard[kAnswerKey], kAnswerKey, @"YES", kFavoritedKey, nil];
+        self.numberOfFavorites++;
+    }
+    [self insertFlashcard:newFlashcard atIndex:index];
+    
+}
+
+- (BOOL) getFavoriteFlashcard: (NSDictionary *) flashcard { //(NSInteger) index{
+    return [flashcard[kFavoritedKey] boolValue];
+}
+
+
 
 @end

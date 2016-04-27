@@ -11,6 +11,8 @@
 // constants
 static NSString * const kQuestionKey = @"question";
 static NSString * const kAnswerKey = @"answer";
+static NSString * const kFavoritedKey = @"favorite";
+
 
 @interface FlashcardsModel : NSObject
 
@@ -36,5 +38,8 @@ static NSString * const kAnswerKey = @"answer";
 - (NSDictionary *) nextFlashcard;
 - (NSDictionary *) prevFlashcard;
 
+// Favorites methods
+- (BOOL) getFavoriteFlashcard: (NSDictionary *) flashcard;
+- (void) setFavoriteFlashcard;
 
 @end

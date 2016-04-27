@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A35A2CD1CD04C4D00FA7CD1 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A35A2CC1CD04C4D00FA7CD1 /* FavoritesTableViewController.m */; };
 		2A361ADD1C9791A90092FF4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A361ADC1C9791A90092FF4E /* main.m */; };
 		2A361AE01C9791A90092FF4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A361ADF1C9791A90092FF4E /* AppDelegate.m */; };
 		2A361AE31C9791A90092FF4E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A361AE21C9791A90092FF4E /* ViewController.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A35A2CB1CD04C4D00FA7CD1 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
+		2A35A2CC1CD04C4D00FA7CD1 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
 		2A361AD81C9791A90092FF4E /* lab 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A361ADC1C9791A90092FF4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A361ADE1C9791A90092FF4E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 				2A4B600D1CAF10AB00C410DF /* TableViewController.m */,
 				2A4B600F1CAF8B9D00C410DF /* AddViewController.h */,
 				2A4B60101CAF8B9D00C410DF /* AddViewController.m */,
+				2A35A2CB1CD04C4D00FA7CD1 /* FavoritesTableViewController.h */,
+				2A35A2CC1CD04C4D00FA7CD1 /* FavoritesTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				2A361AE31C9791A90092FF4E /* ViewController.m in Sources */,
 				2A4B60111CAF8B9D00C410DF /* AddViewController.m in Sources */,
 				2A361AE01C9791A90092FF4E /* AppDelegate.m in Sources */,
+				2A35A2CD1CD04C4D00FA7CD1 /* FavoritesTableViewController.m in Sources */,
 				2A4B600E1CAF10AB00C410DF /* TableViewController.m in Sources */,
 				2A361ADD1C9791A90092FF4E /* main.m in Sources */,
 			);
