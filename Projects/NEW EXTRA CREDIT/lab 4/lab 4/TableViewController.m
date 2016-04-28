@@ -1,22 +1,23 @@
 //
-//  FavoritesTableViewController.m
-//  lab 4
+//  TableViewController.m
+//  TableView
 //
-//  Created by LJ on 4/26/16.
+//  Created by LJ on 3/7/16.
 //  Copyright © 2016 Jerry Webb. All rights reserved.
 //
 
-#import "FavoritesTableViewController.h"
+#import "TableViewController.h"
 #import "FlashcardsModel.h"
+#import "AddViewController.h"
 
 
-@interface FavoritesTableViewController ()
-
+@interface TableViewController ()
+//@property (strong,nonatomic) QuotesModel *model;
 @property (strong,nonatomic) FlashcardsModel *model;
 
 @end
 
-@implementation FavoritesTableViewController
+@implementation TableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +27,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,21 +42,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return [self.model getNumberOfFavorites];
+    return [self.model numberOfFlashcards];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell" forIndexPath:indexPath];
+
+- (UITableViewCell *)tableView: (UITableView *) tableView
+         cellForRowAtIndexPath:(NSIndexPath *) indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"QuestionTableCell" forIndexPath:indexPath];
     
-//     Configure the cell...
-    NSDictionary *flashcard = [self.model favortieFlashcardAtIndex:indexPath.row];
-    
+    // Configure the cell...
+    NSDictionary *flashcard = [self.model flashcardAtIndex:indexPath.row];
+//
     cell.textLabel.text = [flashcard objectForKey: kQuestionKey];
     cell.detailTextLabel.text = [flashcard objectForKey: kAnswerKey];
+    
     return cell;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -70,13 +74,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.model removeFavoriteFlashcardAtIndex:indexPath.row];
+        [self.model removeFlashcardAtIndex:indexPath.row];
+        // Delete the row from the tableView
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+            withRowAnimation:UITableViewRowAnimationFade];
         
-
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 
 
@@ -94,14 +100,39 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
+
+
+- (IBAction)addQuote:(id)sender {
+    [self performSegueWithIdentifier:@"addSegue" sender:sender];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//     Get the new view controller using [segue destinationViewController].
+//     Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqual:@"addSegue"]){
+        
+        AddViewController* addVC = [segue destinationViewController];
+
+        
+        addVC.labelString = @"Please enter a Question";
+        addVC.textFieldPlaceHolder = @"Answer";
+        
+        
+        [addVC setCompletion:^(NSString* textViewString, NSString* textFieldString){
+            
+            if(textViewString != nil){
+                [self.model insertFlashcard:textViewString answer:textFieldString];
+                [self.tableView reloadData];
+            }
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
 }
-*/
+
 
 @end
