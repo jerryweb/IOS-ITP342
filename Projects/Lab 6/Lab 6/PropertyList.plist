@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>place0</key>
+<array>
 	<dict>
 		<key>name</key>
 		<string>USC</string>
 		<key>website</key>
-		<string>http://www.usc.edu/</string>
+		<string>https://www.usc.edu/</string>
 		<key>image</key>
 		<string>usc</string>
 	</dict>
-	<key>place1</key>
 	<dict>
 		<key>name</key>
 		<string>UCLA</string>
@@ -20,16 +18,14 @@
 		<key>image</key>
 		<string>ucla</string>
 	</dict>
-	<key>place2</key>
 	<dict>
 		<key>name</key>
 		<string>Getty</string>
 		<key>website</key>
-		<string>http://www.getty.edu/</string>
+		<string>https://www.getty.edu/</string>
 		<key>image</key>
 		<string>getty</string>
 	</dict>
-	<key>place3</key>
 	<dict>
 		<key>name</key>
 		<string>LA Live</string>
@@ -38,16 +34,14 @@
 		<key>image</key>
 		<string>la_live</string>
 	</dict>
-	<key>place4</key>
 	<dict>
 		<key>name</key>
 		<string>LACMA</string>
 		<key>website</key>
-		<string>http://www.lacma.org/</string>
+		<string>https://www.lacma.org/</string>
 		<key>image</key>
 		<string>lacma</string>
 	</dict>
-	<key>place5</key>
 	<dict>
 		<key>name</key>
 		<string>Disneyland</string>
@@ -56,5 +50,5 @@
 		<key>image</key>
 		<string>disneyland</string>
 	</dict>
-</dict>
+</array>
 </plist>

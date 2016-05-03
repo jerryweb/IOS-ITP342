@@ -19,5 +19,10 @@
 
 @implementation PlaceItemCollectionViewCell
 
+- (void) setPlace:(NSDictionary *)place{
+    self.imageView.image = [UIImage imageNamed:[place valueForKey:@"image"]];
+    
+    self.placeLabel.text = place[@"name"];
+}
 
 @end

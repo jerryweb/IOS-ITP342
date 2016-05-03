@@ -7,11 +7,15 @@
 //
 
 #import "PlaceCollectionViewController.h"
+#import "PlaceItemCollectionViewCell.h"
+#import "DetailViewController.h"
 #import "PlaceModel.h"
 
 @interface PlaceCollectionViewController ()
 
 @property (strong, nonatomic) PlaceModel *model;
+@property (strong, nonatomic) NSArray *data;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @end
 
@@ -21,15 +25,15 @@ static NSString * const reuseIdentifier = @"PlaceItemCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.model = [PlaceModel sharedModel];
+
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
-    self.model = [PlaceModel sharedModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,15 +41,23 @@ static NSString * const reuseIdentifier = @"PlaceItemCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqual:@"webView"]){
+        NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+        NSInteger index =  (long)selectedIndexPath.row;
+        DetailViewController *inputVC = segue.destinationViewController;
+        NSDictionary *temp = [self.model placeAtIndex:index];
+        inputVC.place = temp;
+    }
 }
-*/
+
 
 #pragma mark - Rotation
 
@@ -67,20 +79,22 @@ static NSString * const reuseIdentifier = @"PlaceItemCell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    NSLog(@"number of places %lu", (unsigned long)[self.model numberOfPlaces]);
+    return [self.model numberOfPlaces];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    PlaceItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceItemCell" forIndexPath:indexPath];
     
     // Configure the cell
+    NSDictionary *place = [self.model placeAtIndex:indexPath.row];
+    
+    [cell setPlace:place];
     
     return cell;
 }

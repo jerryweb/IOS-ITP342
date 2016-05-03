@@ -8,7 +8,7 @@
 
 #import "PlaceModel.h"
 
-static NSString * const kPlacesPList = @"PropertyList.plist";
+static NSString * const kPlacesPList = @"PropertyList";
 
 @interface PlaceModel()
 
@@ -32,13 +32,13 @@ static NSString * const kPlacesPList = @"PropertyList.plist";
 }
 
 - (instancetype) init {
-    self = [super init];
-    if (self){
-        NSString * path = [[NSBundle mainBundle]pathForResource:@"Places" ofType:@"plist"];
+//    self = [super init];
+//    if (self){
+        NSString * path = [[NSBundle mainBundle]pathForResource:kPlacesPList ofType:@"plist"];
         
-        _places = [[NSMutableArray alloc] initWithContentsOfFile:path];
+        _places = [NSMutableArray arrayWithContentsOfFile:path];
 
-    }
+//    }
     return self;
 }
 

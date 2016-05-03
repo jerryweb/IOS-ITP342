@@ -13,4 +13,6 @@
 //@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 //@property (weak, nonatomic) IBOutlet UILabel *placeLabel;
 
+- (void) setPlace: (NSDictionary *) place;
+
 @end

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2A0018BB1CCF04360033039C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018BA1CCF04360033039C /* main.m */; };
 		2A0018BE1CCF04360033039C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018BD1CCF04360033039C /* AppDelegate.m */; };
-		2A0018C11CCF04360033039C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018C01CCF04360033039C /* ViewController.m */; };
 		2A0018C41CCF04360033039C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0018C21CCF04360033039C /* Main.storyboard */; };
 		2A0018C61CCF04360033039C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A0018C51CCF04360033039C /* Assets.xcassets */; };
 		2A0018C91CCF04360033039C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0018C71CCF04360033039C /* LaunchScreen.storyboard */; };
@@ -19,6 +18,7 @@
 		2A0018F31CCF0D7E0033039C /* PlaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018F21CCF0D7E0033039C /* PlaceModel.m */; };
 		2A0018F61CCF10530033039C /* PlaceCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018F51CCF10530033039C /* PlaceCollectionViewController.m */; };
 		2A0018F91CCF12880033039C /* PlaceItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0018F81CCF12880033039C /* PlaceItemCollectionViewCell.m */; };
+		2A1534B81CD43FCD00003190 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1534B71CD43FCD00003190 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +43,6 @@
 		2A0018BA1CCF04360033039C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A0018BC1CCF04360033039C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A0018BD1CCF04360033039C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2A0018BF1CCF04360033039C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2A0018C01CCF04360033039C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2A0018C31CCF04360033039C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A0018C51CCF04360033039C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A0018C81CCF04360033039C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +60,8 @@
 		2A0018F51CCF10530033039C /* PlaceCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCollectionViewController.m; sourceTree = "<group>"; };
 		2A0018F71CCF12880033039C /* PlaceItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceItemCollectionViewCell.h; sourceTree = "<group>"; };
 		2A0018F81CCF12880033039C /* PlaceItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceItemCollectionViewCell.m; sourceTree = "<group>"; };
+		2A1534B61CD43FCD00003190 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2A1534B71CD43FCD00003190 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +112,7 @@
 		2A0018B81CCF04360033039C /* Lab 6 */ = {
 			isa = PBXGroup;
 			children = (
+				2A0018EF1CCF06190033039C /* PropertyList.plist */,
 				2A0018EE1CCF05530033039C /* Controller */,
 				2A0018ED1CCF054B0033039C /* View */,
 				2A0018EC1CCF05450033039C /* Model */,
@@ -163,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				2A0018C21CCF04360033039C /* Main.storyboard */,
-				2A0018EF1CCF06190033039C /* PropertyList.plist */,
 				2A0018C71CCF04360033039C /* LaunchScreen.storyboard */,
 			);
 			name = View;
@@ -172,12 +172,12 @@
 		2A0018EE1CCF05530033039C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2A0018BF1CCF04360033039C /* ViewController.h */,
-				2A0018C01CCF04360033039C /* ViewController.m */,
 				2A0018F41CCF10530033039C /* PlaceCollectionViewController.h */,
 				2A0018F51CCF10530033039C /* PlaceCollectionViewController.m */,
 				2A0018F71CCF12880033039C /* PlaceItemCollectionViewCell.h */,
 				2A0018F81CCF12880033039C /* PlaceItemCollectionViewCell.m */,
+				2A1534B61CD43FCD00003190 /* DetailViewController.h */,
+				2A1534B71CD43FCD00003190 /* DetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -313,12 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A0018C11CCF04360033039C /* ViewController.m in Sources */,
 				2A0018F61CCF10530033039C /* PlaceCollectionViewController.m in Sources */,
 				2A0018F31CCF0D7E0033039C /* PlaceModel.m in Sources */,
 				2A0018F91CCF12880033039C /* PlaceItemCollectionViewCell.m in Sources */,
 				2A0018BE1CCF04360033039C /* AppDelegate.m in Sources */,
 				2A0018BB1CCF04360033039C /* main.m in Sources */,
+				2A1534B81CD43FCD00003190 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +542,7 @@
 				2A0018E51CCF04360033039C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A0018E61CCF04360033039C /* Build configuration list for PBXNativeTarget "Lab 6Tests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +551,7 @@
 				2A0018E81CCF04360033039C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A0018E91CCF04360033039C /* Build configuration list for PBXNativeTarget "Lab 6UITests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +560,7 @@
 				2A0018EB1CCF04360033039C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
