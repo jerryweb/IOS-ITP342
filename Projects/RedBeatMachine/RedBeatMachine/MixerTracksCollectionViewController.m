@@ -7,10 +7,10 @@
 //
 
 #import "MixerTracksCollectionViewController.h"
-#import "TrackModel.h"
+#import "TracksSingleton.h"
 #import "SequencerModel.h"
 @interface MixerTracksCollectionViewController ()
-@property (strong, nonatomic) TrackModel *trackModel;
+@property (strong, nonatomic) TracksSingleton *tracksSingleton;
 @property (strong, nonatomic) SequencerModel *sequencerModel;
 @end
 
@@ -20,7 +20,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.trackModel = [TrackModel sharedModel];
+    self.tracksSingleton = [TracksSingleton sharedModel];
     self.sequencerModel = [SequencerModel sharedModel];
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;

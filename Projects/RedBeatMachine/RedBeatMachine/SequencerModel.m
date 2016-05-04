@@ -7,7 +7,7 @@
 //  This class holds the thread that powers the midi sequencer that plays the given drum pattern. It holds references to the Track singleton and connects the sequencer view controller to the tracks.
 
 #import "SequencerModel.h"
-#import "TrackModel.h"
+#import "TracksSingleton.h"
 
 
 @implementation SequencerModel

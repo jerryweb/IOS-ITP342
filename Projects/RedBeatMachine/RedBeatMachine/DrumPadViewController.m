@@ -8,12 +8,12 @@
 
 #import "DrumPadViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "TrackModel.h"
+#import "TracksSingleton.h"
 #import "SequencerModel.h"
 
 
 @interface DrumPadViewController ()
-@property (strong, nonatomic) TrackModel *trackModel;
+@property (strong, nonatomic) TracksSingleton *tracksSingleton;
 @property (strong, nonatomic) SequencerModel *sequencerModel;
 
 @property (weak, nonatomic) IBOutlet UISlider *masterVolumeSlider;
@@ -25,20 +25,40 @@
 @property (weak, nonatomic) IBOutlet UIStepper *bpmStepper;
 @property (weak, nonatomic) IBOutlet UITextView *bmpTextView;
 
+// Outlets for the Drum Pad buttons
+@property (weak, nonatomic) IBOutlet UIButton *pad0Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad1Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad2Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad3Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad4Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad5Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad6Button;
+@property (weak, nonatomic) IBOutlet UIButton *pad7Button;
 
 @end
 
 @implementation DrumPadViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+#pragma mark - refreshing view methods
+- (void)viewWillAppear:(BOOL)animated {
+//    [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.trackModel = [TrackModel sharedModel];
+    self.tracksSingleton = [TracksSingleton sharedModel];
     self.sequencerModel = [SequencerModel sharedModel];
     [self setBpmTextView];
-
+    [self.masterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
+    [self modifyMasterVolume:[self.tracksSingleton masterVolume]];
+    if(!self.sequencerModel.play){
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        
+    }
+    else{
+        [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
+    }
     
+    [self updatePadNames];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +67,18 @@
 }
 
 
+// update the names of each of the button pads to match the assigned sound sample
+- (void) updatePadNames{
+    [self.pad0Button setTitle:[self.tracksSingleton returnTrackName:0] forState:UIControlStateNormal];
+    [self.pad1Button setTitle:[self.tracksSingleton returnTrackName:1] forState:UIControlStateNormal];
+    [self.pad2Button setTitle:[self.tracksSingleton returnTrackName:2] forState:UIControlStateNormal];
+    [self.pad3Button setTitle:[self.tracksSingleton returnTrackName:3] forState:UIControlStateNormal];
+    [self.pad4Button setTitle:[self.tracksSingleton returnTrackName:4] forState:UIControlStateNormal];
+    [self.pad5Button setTitle:[self.tracksSingleton returnTrackName:5] forState:UIControlStateNormal];
+    [self.pad6Button setTitle:[self.tracksSingleton returnTrackName:6] forState:UIControlStateNormal];
+    [self.pad7Button setTitle:[self.tracksSingleton returnTrackName:7] forState:UIControlStateNormal];
+
+}
 
 
 
@@ -59,13 +91,10 @@
 - (IBAction)sliderChangeMasterVolume:(id)sender {
     
     [self modifyMasterVolume: self.masterVolumeSlider.value];
-    
+    [self.tracksSingleton setMasterVolume:self.masterVolumeSlider.value];
+
 }
 
-- (void) setMasterVolume: (float) volume {
-    self.masterVolumeSlider.value = volume/100;
-    [self modifyMasterVolume: self.masterVolumeSlider.value];
-}
 
 - (IBAction)stepBpm:(id)sender {
     [self.sequencerModel setBpm:self.bpmStepper.value];
@@ -92,6 +121,18 @@
 }
 
 
+- (IBAction)pauseButtonPressed:(id)sender {
+    [self stopPlaying];
+}
+
+- (IBAction)playButtonPressed:(id)sender {
+    [self stopPlaying];
+}
+
+- (void) stopPlaying{
+    self.sequencerModel.play = NO;
+    [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+}
 
 
 #pragma mark - Triggering pad to play sounds
@@ -101,37 +142,37 @@
 
 
 - (IBAction)triggerPad0:(id)sender {
-    [self.trackModel playTrackSample:0];
+    [self.tracksSingleton playTrackSample:0];
 //    [self.pad0 setTitle:@"drum" forState:UIControlStateNormal];
 }
 
 - (IBAction)triggerPad1:(id)sender {
-    [self.trackModel playTrackSample:1];
+    [self.tracksSingleton playTrackSample:1];
 }
 
 - (IBAction)triggerPad2:(id)sender {
-    [self.trackModel playTrackSample:2];
+    [self.tracksSingleton playTrackSample:2];
 }
 
 - (IBAction)triggerPad3:(id)sender {
-    [self.trackModel playTrackSample:3];
+    [self.tracksSingleton playTrackSample:3];
 
 }
 
 - (IBAction)triggerPad4:(id)sender {
-    [self.trackModel playTrackSample:4];
+    [self.tracksSingleton playTrackSample:4];
 }
 
 - (IBAction)triggerPad5:(id)sender {
-    [self.trackModel playTrackSample:5];
+    [self.tracksSingleton playTrackSample:5];
 }
 
 - (IBAction)triggerPad6:(id)sender {
-    [self.trackModel playTrackSample:6];
+    [self.tracksSingleton playTrackSample:6];
 }
 
 - (IBAction)triggerPad7:(id)sender {
-    [self.trackModel playTrackSample:7];
+    [self.tracksSingleton playTrackSample:7];
 }
 
 

@@ -7,27 +7,99 @@
 //
 
 #import "MixerViewController.h"
+#import "TracksSingleton.h"
+#import "SequencerModel.h"
+
 
 @interface MixerViewController ()
+@property (strong, nonatomic) TracksSingleton *tracksSingleton;
+@property (strong, nonatomic) SequencerModel *sequencerModel;
+
 @property (weak, nonatomic) IBOutlet UISlider *MasterVolumeSlider;
+@property (weak, nonatomic) IBOutlet UILabel *masterVolumeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 @end
 
 @implementation MixerViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+//    [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tracksSingleton = [TracksSingleton sharedModel];
+    self.sequencerModel = [SequencerModel sharedModel];
+    
     // Rotate the slider to have a verticle orientation
     CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
     self.MasterVolumeSlider.transform = trans;
+    [self.MasterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
+    [self modifyMasterVolume: self.MasterVolumeSlider.value];
+    if(!self.sequencerModel.play){
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        
+    }
+    else{
+        [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
+        
+    }
+    
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - transport button events these are the actions associated to the transport buttons (play, pause, stop, and record)
+
+- (IBAction)togglePlayButton:(id)sender {
+    if(!self.sequencerModel.play){
+        [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
+        
+    }
+    else {
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    }
+    self.sequencerModel.play = !self.sequencerModel.play;
+}
+- (IBAction)pauseButtonPressed:(id)sender {
+    [self stopPlaying];
+}
+
+- (IBAction)stopButtonPressed:(id)sender {
+    [self stopPlaying];
+}
+
+- (void) stopPlaying{
+    self.sequencerModel.play = NO;
+    [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+}
+
+- (IBAction)sliderChangedMasterVolume:(id)sender {
+    [self modifyMasterVolume: self.MasterVolumeSlider.value];
+    [self.tracksSingleton setMasterVolume:self.MasterVolumeSlider.value];
+
+}
+
+
+- (void) modifyMasterVolume: (float) volume{
+    NSString *percentSign = @"%";
+    self.masterVolumeLabel.text = [NSString stringWithFormat:@"%.00f%@", volume*100, percentSign];
+}
+
+- (void) setMasterVolume: (float) volume {
+    self.MasterVolumeSlider.value = volume/100;
+    [self.tracksSingleton setMasterVolume:volume];
+    [self modifyMasterVolume: self.MasterVolumeSlider.value];
+}
+
+
 
 /*
 #pragma mark - Navigation

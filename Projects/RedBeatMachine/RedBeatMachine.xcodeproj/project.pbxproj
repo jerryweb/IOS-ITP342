@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2A29D9F81CD852630014E465 /* Bar_K.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A29D9F71CD852630014E465 /* Bar_K.wav */; };
-		2A29D9FB1CD857450014E465 /* TrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A29D9FA1CD857450014E465 /* TrackModel.m */; };
+		2A29D9FB1CD857450014E465 /* TracksSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A29D9FA1CD857450014E465 /* TracksSingleton.m */; };
 		2A29D9FD1CD85A660014E465 /* Cap_Snr.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A29D9FC1CD85A660014E465 /* Cap_Snr.wav */; };
 		2A29D9FF1CD85A780014E465 /* Hi_Shk3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A29D9FE1CD85A780014E465 /* Hi_Shk3.wav */; };
 		2A29DA031CD85EC30014E465 /* SequencerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A29DA021CD85EC30014E465 /* SequencerModel.m */; };
-		2A29DA061CD882120014E465 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A29DA051CD882120014E465 /* Track.m */; };
+		2A29DA061CD882120014E465 /* TrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A29DA051CD882120014E465 /* TrackModel.m */; };
 		2A4919F31CD8488100D24710 /* DrumPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4919F21CD8488100D24710 /* DrumPadViewController.m */; };
 		2A4EC1681CD5C49700F0A58F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EC1671CD5C49700F0A58F /* main.m */; };
 		2A4EC16B1CD5C49700F0A58F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EC16A1CD5C49700F0A58F /* AppDelegate.m */; };
@@ -23,6 +23,15 @@
 		2A4EC18C1CD5C49700F0A58F /* RedBeatMachineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EC18B1CD5C49700F0A58F /* RedBeatMachineUITests.m */; };
 		2A951BF71CD9B9A200D014ED /* MixerTracksCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951BF61CD9B9A200D014ED /* MixerTracksCollectionViewController.m */; };
 		2A951BFA1CD9C4C100D014ED /* MixerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951BF91CD9C4C100D014ED /* MixerViewController.m */; };
+		2A951BFC1CD9C7BE00D014ED /* Tmb_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951BFB1CD9C7BE00D014ED /* Tmb_3.wav */; };
+		2A951BFE1CD9C7E700D014ED /* Wan_Ohh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951BFD1CD9C7E700D014ED /* Wan_Ohh.wav */; };
+		2A951C001CD9C80E00D014ED /* Bngo_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951BFF1CD9C80E00D014ED /* Bngo_3.wav */; };
+		2A951C021CD9C84200D014ED /* 2uicksilver 808 single.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951C011CD9C84200D014ED /* 2uicksilver 808 single.wav */; };
+		2A951C041CD9C85000D014ED /* Perfect 808.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951C031CD9C85000D014ED /* Perfect 808.wav */; };
+		2A951C061CD9C8AD00D014ED /* Hi_Tom2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951C051CD9C8AD00D014ED /* Hi_Tom2.wav */; };
+		2A951C081CD9EE3400D014ED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C071CD9EE3400D014ED /* AudioToolbox.framework */; };
+		2A951C0A1CD9EE3B00D014ED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C091CD9EE3B00D014ED /* AVFoundation.framework */; };
+		2A951C0C1CD9EE4E00D014ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C0B1CD9EE4E00D014ED /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,14 +53,14 @@
 
 /* Begin PBXFileReference section */
 		2A29D9F71CD852630014E465 /* Bar_K.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bar_K.wav; sourceTree = "<group>"; };
-		2A29D9F91CD857450014E465 /* TrackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackModel.h; sourceTree = "<group>"; };
-		2A29D9FA1CD857450014E465 /* TrackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackModel.m; sourceTree = "<group>"; };
+		2A29D9F91CD857450014E465 /* TracksSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksSingleton.h; sourceTree = "<group>"; };
+		2A29D9FA1CD857450014E465 /* TracksSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksSingleton.m; sourceTree = "<group>"; };
 		2A29D9FC1CD85A660014E465 /* Cap_Snr.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cap_Snr.wav; sourceTree = "<group>"; };
 		2A29D9FE1CD85A780014E465 /* Hi_Shk3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hi_Shk3.wav; sourceTree = "<group>"; };
 		2A29DA011CD85EC30014E465 /* SequencerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerModel.h; sourceTree = "<group>"; };
 		2A29DA021CD85EC30014E465 /* SequencerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerModel.m; sourceTree = "<group>"; };
-		2A29DA041CD882120014E465 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		2A29DA051CD882120014E465 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		2A29DA041CD882120014E465 /* TrackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackModel.h; sourceTree = "<group>"; };
+		2A29DA051CD882120014E465 /* TrackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackModel.m; sourceTree = "<group>"; };
 		2A4919F11CD8488100D24710 /* DrumPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrumPadViewController.h; sourceTree = "<group>"; };
 		2A4919F21CD8488100D24710 /* DrumPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrumPadViewController.m; sourceTree = "<group>"; };
 		2A4EC1631CD5C49700F0A58F /* RedBeatMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedBeatMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +81,15 @@
 		2A951BF61CD9B9A200D014ED /* MixerTracksCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerTracksCollectionViewController.m; sourceTree = "<group>"; };
 		2A951BF81CD9C4C100D014ED /* MixerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerViewController.h; sourceTree = "<group>"; };
 		2A951BF91CD9C4C100D014ED /* MixerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerViewController.m; sourceTree = "<group>"; };
+		2A951BFB1CD9C7BE00D014ED /* Tmb_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tmb_3.wav; sourceTree = "<group>"; };
+		2A951BFD1CD9C7E700D014ED /* Wan_Ohh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wan_Ohh.wav; sourceTree = "<group>"; };
+		2A951BFF1CD9C80E00D014ED /* Bngo_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bngo_3.wav; sourceTree = "<group>"; };
+		2A951C011CD9C84200D014ED /* 2uicksilver 808 single.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "2uicksilver 808 single.wav"; sourceTree = "<group>"; };
+		2A951C031CD9C85000D014ED /* Perfect 808.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Perfect 808.wav"; sourceTree = "<group>"; };
+		2A951C051CD9C8AD00D014ED /* Hi_Tom2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hi_Tom2.wav; sourceTree = "<group>"; };
+		2A951C071CD9EE3400D014ED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2A951C091CD9EE3B00D014ED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2A951C0B1CD9EE4E00D014ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A951C0C1CD9EE4E00D014ED /* Foundation.framework in Frameworks */,
+				2A951C0A1CD9EE3B00D014ED /* AVFoundation.framework in Frameworks */,
+				2A951C081CD9EE3400D014ED /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +126,12 @@
 				2A29D9F71CD852630014E465 /* Bar_K.wav */,
 				2A29D9FC1CD85A660014E465 /* Cap_Snr.wav */,
 				2A29D9FE1CD85A780014E465 /* Hi_Shk3.wav */,
+				2A951BFB1CD9C7BE00D014ED /* Tmb_3.wav */,
+				2A951BFD1CD9C7E700D014ED /* Wan_Ohh.wav */,
+				2A951BFF1CD9C80E00D014ED /* Bngo_3.wav */,
+				2A951C011CD9C84200D014ED /* 2uicksilver 808 single.wav */,
+				2A951C031CD9C85000D014ED /* Perfect 808.wav */,
+				2A951C051CD9C8AD00D014ED /* Hi_Tom2.wav */,
 			);
 			name = Samples;
 			sourceTree = "<group>";
@@ -112,6 +139,9 @@
 		2A4EC15A1CD5C49700F0A58F = {
 			isa = PBXGroup;
 			children = (
+				2A951C0B1CD9EE4E00D014ED /* Foundation.framework */,
+				2A951C091CD9EE3B00D014ED /* AVFoundation.framework */,
+				2A951C071CD9EE3400D014ED /* AudioToolbox.framework */,
 				2A4EC1651CD5C49700F0A58F /* RedBeatMachine */,
 				2A4EC17F1CD5C49700F0A58F /* RedBeatMachineTests */,
 				2A4EC18A1CD5C49700F0A58F /* RedBeatMachineUITests */,
@@ -173,12 +203,12 @@
 		2A4EC1991CD5C4A400F0A58F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2A29D9F91CD857450014E465 /* TrackModel.h */,
-				2A29D9FA1CD857450014E465 /* TrackModel.m */,
+				2A29D9F91CD857450014E465 /* TracksSingleton.h */,
+				2A29D9FA1CD857450014E465 /* TracksSingleton.m */,
 				2A29DA011CD85EC30014E465 /* SequencerModel.h */,
 				2A29DA021CD85EC30014E465 /* SequencerModel.m */,
-				2A29DA041CD882120014E465 /* Track.h */,
-				2A29DA051CD882120014E465 /* Track.m */,
+				2A29DA041CD882120014E465 /* TrackModel.h */,
+				2A29DA051CD882120014E465 /* TrackModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -311,11 +341,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A29D9F81CD852630014E465 /* Bar_K.wav in Resources */,
+				2A951C061CD9C8AD00D014ED /* Hi_Tom2.wav in Resources */,
+				2A951C021CD9C84200D014ED /* 2uicksilver 808 single.wav in Resources */,
 				2A4EC1761CD5C49700F0A58F /* LaunchScreen.storyboard in Resources */,
 				2A29D9FF1CD85A780014E465 /* Hi_Shk3.wav in Resources */,
+				2A951BFE1CD9C7E700D014ED /* Wan_Ohh.wav in Resources */,
+				2A951BFC1CD9C7BE00D014ED /* Tmb_3.wav in Resources */,
 				2A4EC1731CD5C49700F0A58F /* Assets.xcassets in Resources */,
 				2A4EC1711CD5C49700F0A58F /* Main.storyboard in Resources */,
 				2A29D9FD1CD85A660014E465 /* Cap_Snr.wav in Resources */,
+				2A951C041CD9C85000D014ED /* Perfect 808.wav in Resources */,
+				2A951C001CD9C80E00D014ED /* Bngo_3.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,9 +379,9 @@
 				2A4EC16B1CD5C49700F0A58F /* AppDelegate.m in Sources */,
 				2A951BF71CD9B9A200D014ED /* MixerTracksCollectionViewController.m in Sources */,
 				2A29DA031CD85EC30014E465 /* SequencerModel.m in Sources */,
-				2A29D9FB1CD857450014E465 /* TrackModel.m in Sources */,
+				2A29D9FB1CD857450014E465 /* TracksSingleton.m in Sources */,
 				2A951BFA1CD9C4C100D014ED /* MixerViewController.m in Sources */,
-				2A29DA061CD882120014E465 /* Track.m in Sources */,
+				2A29DA061CD882120014E465 /* TrackModel.m in Sources */,
 				2A4EC1681CD5C49700F0A58F /* main.m in Sources */,
 				2A4919F31CD8488100D24710 /* DrumPadViewController.m in Sources */,
 			);

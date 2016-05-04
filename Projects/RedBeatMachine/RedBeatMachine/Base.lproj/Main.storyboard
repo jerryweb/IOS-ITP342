@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--DrumPadViewController-->
@@ -105,15 +106,8 @@
                                     <action selector="triggerPad7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W1j-05-jXp"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tmi-DU-7r7" userLabel="VolumeSlider">
-                                <rect key="frame" x="432" y="42" width="160" height="31"/>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="sliderChangeMasterVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="NRL-4A-dNC"/>
-                                </connections>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhf-XE-yzO" userLabel="VolumeLabel">
-                                <rect key="frame" x="598" y="37" width="49" height="40"/>
+                                <rect key="frame" x="584" y="37" width="63" height="40"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -146,6 +140,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lr8-NX-jYY" userLabel="PauseButton">
                                         <rect key="frame" x="56" y="8" width="40" height="54"/>
                                         <state key="normal" image="pause"/>
+                                        <connections>
+                                            <action selector="pauseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RDV-kP-GXl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ps6-Kw-EFt" userLabel="PlayButton">
                                         <rect key="frame" x="8" y="8" width="40" height="54"/>
@@ -160,6 +157,9 @@
                                         <state key="normal" image="stop">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P0S-E4-fPy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8K-A2-iYX" userLabel="RecordButton">
                                         <rect key="frame" x="148" y="8" width="40" height="54"/>
@@ -177,6 +177,13 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.73131009619999998" green="0.64549269529999997" blue="0.24743292389999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tmi-DU-7r7" userLabel="VolumeSlider">
+                                <rect key="frame" x="418" y="42" width="160" height="31"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="sliderChangeMasterVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="NRL-4A-dNC"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -189,13 +196,21 @@
                         <outlet property="masterVolumeLabel" destination="qhf-XE-yzO" id="m3s-KM-UKL"/>
                         <outlet property="masterVolumeSlider" destination="Tmi-DU-7r7" id="asq-Cc-1D0"/>
                         <outlet property="pad0" destination="vk3-en-BnZ" id="NLw-kd-vnk"/>
+                        <outlet property="pad0Button" destination="vk3-en-BnZ" id="eMI-I2-EFb"/>
                         <outlet property="pad1" destination="34x-eq-9u8" id="aBP-C9-p1F"/>
+                        <outlet property="pad1Button" destination="34x-eq-9u8" id="RX6-U6-UJZ"/>
                         <outlet property="pad2" destination="JhX-uZ-rQG" id="Tsj-sn-96J"/>
+                        <outlet property="pad2Button" destination="JhX-uZ-rQG" id="iok-US-YBo"/>
                         <outlet property="pad3" destination="u5Z-s9-Nom" id="TlZ-Uy-Oh7"/>
+                        <outlet property="pad3Button" destination="u5Z-s9-Nom" id="24X-3h-D53"/>
                         <outlet property="pad4" destination="ZHe-sP-ZuE" id="94h-gz-Kxx"/>
+                        <outlet property="pad4Button" destination="ZHe-sP-ZuE" id="BQR-eG-A2U"/>
                         <outlet property="pad5" destination="wjh-pt-n8V" id="dHa-df-I25"/>
+                        <outlet property="pad5Button" destination="wjh-pt-n8V" id="GY1-Sd-Ec8"/>
                         <outlet property="pad6" destination="du3-ok-lyC" id="j5o-hE-ydp"/>
+                        <outlet property="pad6Button" destination="du3-ok-lyC" id="ai2-wU-kzg"/>
                         <outlet property="pad7" destination="ViJ-0D-WlB" id="iAt-34-jrg"/>
+                        <outlet property="pad7Button" destination="ViJ-0D-WlB" id="zqx-tX-ojd"/>
                         <outlet property="pauseButton" destination="Lr8-NX-jYY" id="cKq-tT-lT2"/>
                         <outlet property="playButton" destination="ps6-Kw-EFt" id="6xI-PJ-clk"/>
                         <outlet property="recordButton" destination="v8K-A2-iYX" id="6oK-cA-TbC"/>
@@ -204,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319.5" y="407.5"/>
+            <point key="canvasLocation" x="1373.5" y="419.5"/>
         </scene>
         <!--Mixer-->
         <scene sceneID="By4-Q9-bD8">
@@ -221,11 +236,39 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DaF-CG-0ek">
                                 <rect key="frame" x="20" y="20" width="125" height="298"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksd-Re-ZN8" userLabel="PlayButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="togglePlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0l-yP-1lz"/>
+                                            <action selector="togglePlayButton:" destination="1EB-OM-1qA" eventType="touchUpInside" id="UzO-ws-6Jc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMc-Fq-LCF" userLabel="StopButton">
+                                        <rect key="frame" x="89" y="0.0" width="36" height="36"/>
+                                        <state key="normal" image="stop">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopButtonPressed:" destination="1EB-OM-1qA" eventType="touchUpInside" id="qKT-Vl-oSS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkj-Wv-FFE" userLabel="PauseButton">
+                                        <rect key="frame" x="44" y="0.0" width="36" height="36"/>
+                                        <state key="normal" image="pause"/>
+                                        <connections>
+                                            <action selector="pauseButtonPressed:" destination="1EB-OM-1qA" eventType="touchUpInside" id="YXc-Z7-pTI"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="beL-Y8-XQW" userLabel="VerticleView">
                                         <rect key="frame" x="46" y="79" width="34" height="173"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RZR-GM-KK4" userLabel="MasterVolumeSlider">
                                                 <rect key="frame" x="-63" y="72" width="160" height="31"/>
+                                                <connections>
+                                                    <action selector="sliderChangedMasterVolume:" destination="1EB-OM-1qA" eventType="valueChanged" id="NQb-QU-M1J"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                         <color key="backgroundColor" red="0.4347956731" green="0.4347956731" blue="0.4347956731" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -238,29 +281,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuW-xy-s9n" userLabel="MasterVolumeLabel">
-                                        <rect key="frame" x="41" y="44" width="42" height="29"/>
+                                        <rect key="frame" x="36" y="44" width="54" height="29"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksd-Re-ZN8" userLabel="PlayButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="play"/>
-                                        <connections>
-                                            <action selector="togglePlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0l-yP-1lz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMc-Fq-LCF" userLabel="StopButton">
-                                        <rect key="frame" x="89" y="0.0" width="36" height="36"/>
-                                        <state key="normal" image="stop">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkj-Wv-FFE" userLabel="PauseButton">
-                                        <rect key="frame" x="44" y="0.0" width="36" height="36"/>
-                                        <state key="normal" image="pause"/>
-                                    </button>
                                 </subviews>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oTQ-LX-da1">
@@ -279,11 +304,15 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="MasterVolumeSlider" destination="RZR-GM-KK4" id="XVJ-ro-27D"/>
+                        <outlet property="masterVolumeLabel" destination="JuW-xy-s9n" id="pmK-ME-BSd"/>
+                        <outlet property="pauseButton" destination="wkj-Wv-FFE" id="5uZ-8s-8r8"/>
+                        <outlet property="playButton" destination="ksd-Re-ZN8" id="VlP-pD-9OQ"/>
+                        <outlet property="stopButton" destination="LMc-Fq-LCF" id="q6s-X6-Ad5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKB-r6-OxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1302.5" y="885.5"/>
+            <point key="canvasLocation" x="1296.5" y="1003.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0XA-pI-d8O">
@@ -317,8 +346,106 @@
                     <view key="view" contentMode="scaleToFill" id="eRR-cp-BTV">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvL-LH-ngQ" userLabel="PauseButton">
+                                <rect key="frame" x="68" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="coU-GO-NQL"/>
+                                </constraints>
+                                <state key="normal" image="pause"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxt-jx-BAM" userLabel="PlayButton">
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="7cC-Ez-kNQ"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="play"/>
+                                <connections>
+                                    <action selector="togglePlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KXd-KO-hYb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE8-Vi-KJO" userLabel="StopButton">
+                                <rect key="frame" x="116" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="QbO-5N-h8y"/>
+                                </constraints>
+                                <state key="normal" image="stop">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fra-wH-8X9" userLabel="MetronomeButton">
+                                <rect key="frame" x="164" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="U3i-MT-Imm"/>
+                                </constraints>
+                                <state key="normal" title="Metronome">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3L-VN-3IA">
+                                <rect key="frame" x="212" y="20" width="49" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="MF8-nm-bLL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="90" minimumValue="50" maximumValue="160" translatesAutoresizingMaskIntoConstraints="NO" id="G33-Pj-gIN" userLabel="BPMStepper">
+                                <rect key="frame" x="316" y="25" width="94" height="29"/>
+                                <color key="backgroundColor" red="0.32313701919999999" green="0.32313701919999999" blue="0.32313701919999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="t17-V8-BJV"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="stepBpm:" destination="BYZ-38-t0r" eventType="valueChanged" id="Z54-Og-jmh"/>
+                                </connections>
+                            </stepper>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1I-aU-rtH">
+                                <rect key="frame" x="20" y="68" width="627" height="250"/>
+                            </scrollView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="90" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pFg-tU-71V" userLabel="BPMTextView">
+                                <rect key="frame" x="269" y="20" width="39" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="XfY-7b-bsr"/>
+                                </constraints>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="light"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="G33-Pj-gIN" firstAttribute="leading" secondItem="pFg-tU-71V" secondAttribute="trailing" constant="8" symbolic="YES" id="0Lu-57-GEH"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="trailing" secondItem="eRR-cp-BTV" secondAttribute="trailingMargin" id="DBo-jH-mgN"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="top" secondItem="Fra-wH-8X9" secondAttribute="bottom" constant="8" symbolic="YES" id="Err-Ng-5pn"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="top" secondItem="hvL-LH-ngQ" secondAttribute="bottom" constant="8" symbolic="YES" id="HMy-df-JJy"/>
+                            <constraint firstItem="hvL-LH-ngQ" firstAttribute="top" secondItem="AE8-Vi-KJO" secondAttribute="top" id="LHn-aF-gbQ"/>
+                            <constraint firstItem="AE8-Vi-KJO" firstAttribute="top" secondItem="Fra-wH-8X9" secondAttribute="top" id="MrR-Ts-7kh"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="top" secondItem="hxt-jx-BAM" secondAttribute="bottom" constant="8" symbolic="YES" id="PWR-IU-dhW"/>
+                            <constraint firstItem="hvL-LH-ngQ" firstAttribute="leading" secondItem="hxt-jx-BAM" secondAttribute="trailing" constant="8" symbolic="YES" id="ULL-49-1j3"/>
+                            <constraint firstItem="hxt-jx-BAM" firstAttribute="top" secondItem="LMT-Mb-riC" secondAttribute="bottom" id="Wmj-dZ-oa8"/>
+                            <constraint firstItem="hxt-jx-BAM" firstAttribute="top" secondItem="hvL-LH-ngQ" secondAttribute="top" id="XEi-wb-gTg"/>
+                            <constraint firstItem="Fra-wH-8X9" firstAttribute="leading" secondItem="AE8-Vi-KJO" secondAttribute="trailing" constant="8" symbolic="YES" id="XkI-se-wIe"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="top" secondItem="x3L-VN-3IA" secondAttribute="bottom" constant="8" symbolic="YES" id="j7c-3q-dek"/>
+                            <constraint firstItem="x3L-VN-3IA" firstAttribute="leading" secondItem="Fra-wH-8X9" secondAttribute="trailing" constant="8" symbolic="YES" id="lJC-78-Hi1"/>
+                            <constraint firstItem="66Y-aF-MZ9" firstAttribute="top" secondItem="Z1I-aU-rtH" secondAttribute="bottom" constant="8" symbolic="YES" id="roc-H5-clj"/>
+                            <constraint firstItem="pFg-tU-71V" firstAttribute="centerY" secondItem="G33-Pj-gIN" secondAttribute="centerY" id="soL-W2-iUt"/>
+                            <constraint firstItem="G33-Pj-gIN" firstAttribute="top" secondItem="LMT-Mb-riC" secondAttribute="bottom" constant="5" id="tQP-SQ-8UF"/>
+                            <constraint firstItem="hxt-jx-BAM" firstAttribute="leading" secondItem="Z1I-aU-rtH" secondAttribute="leading" id="uKW-oh-Ty3"/>
+                            <constraint firstItem="hxt-jx-BAM" firstAttribute="leading" secondItem="eRR-cp-BTV" secondAttribute="leadingMargin" id="uzh-qL-fJG"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="top" secondItem="pFg-tU-71V" secondAttribute="bottom" constant="8" symbolic="YES" id="v2m-Ge-480"/>
+                            <constraint firstItem="pFg-tU-71V" firstAttribute="leading" secondItem="x3L-VN-3IA" secondAttribute="trailing" constant="8" symbolic="YES" id="vEt-9S-8C8"/>
+                            <constraint firstItem="Fra-wH-8X9" firstAttribute="top" secondItem="x3L-VN-3IA" secondAttribute="top" id="w35-cp-un8"/>
+                            <constraint firstItem="Z1I-aU-rtH" firstAttribute="top" secondItem="AE8-Vi-KJO" secondAttribute="bottom" constant="8" symbolic="YES" id="wAO-wn-HrL"/>
+                            <constraint firstItem="AE8-Vi-KJO" firstAttribute="leading" secondItem="hvL-LH-ngQ" secondAttribute="trailing" constant="8" symbolic="YES" id="wTF-K3-Cg4"/>
+                            <constraint firstItem="x3L-VN-3IA" firstAttribute="top" secondItem="pFg-tU-71V" secondAttribute="top" id="xSK-Od-8ce"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Step Sequencer" image="sequencer" id="PJr-Hg-AF2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -377,7 +504,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYM-RE-CGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319" y="1445"/>
+            <point key="canvasLocation" x="2156" y="852"/>
         </scene>
     </scenes>
     <resources>

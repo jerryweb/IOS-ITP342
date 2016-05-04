@@ -11,7 +11,6 @@
 @interface DrumPadViewController : UIViewController
 
 // Used to update the master volume slider if changed in the mixer view
-- (void) setMasterVolume: (float) volume;
 
 - (void) modifyMasterVolume: (float) volume;
 
