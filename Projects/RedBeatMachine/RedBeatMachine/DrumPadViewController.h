@@ -10,6 +10,16 @@
 
 @interface DrumPadViewController : UIViewController
 
+// Used to update the master volume slider if changed in the mixer view
+- (void) setMasterVolume: (float) volume;
+
+- (void) modifyMasterVolume: (float) volume;
+
+#pragma transport button events - these are the actions associated to the transport buttons (play, pause, stop, and record)
+
+- (IBAction)togglePlayButton:(id)sender;
+
+#pragma drumpad - Wire all 8 pads to like with the track model to play the samples when pressed
 // First row of beat pads 0 - 3
 @property (weak, nonatomic) IBOutlet UIButton *pad0;
 @property (weak, nonatomic) IBOutlet UIButton *pad1;
@@ -22,4 +32,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *pad6;
 @property (weak, nonatomic) IBOutlet UIButton *pad7;
 
+// Connect the drum pad touch events to the track model
+- (IBAction)triggerPad0:(id)sender;
+- (IBAction)triggerPad1:(id)sender;
+- (IBAction)triggerPad2:(id)sender;
+- (IBAction)triggerPad3:(id)sender;
+- (IBAction)triggerPad4:(id)sender;
+- (IBAction)triggerPad5:(id)sender;
+- (IBAction)triggerPad6:(id)sender;
+- (IBAction)triggerPad7:(id)sender;
 @end
