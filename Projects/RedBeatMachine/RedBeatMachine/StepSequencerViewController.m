@@ -1,56 +1,47 @@
 //
-//  MixerViewController.m
+//  StepSequencerViewController.m
 //  RedBeatMachine
 //
-//  Created by LJ on 5/3/16.
+//  Created by LJ on 5/4/16.
 //  Copyright © 2016 Jerry Webb. All rights reserved.
 //
 
-#import "MixerViewController.h"
+#import "StepSequencerViewController.h"
 #import "TracksSingleton.h"
 #import "SequencerModel.h"
 
-
-@interface MixerViewController ()
+@interface StepSequencerViewController ()
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
 @property (strong, nonatomic) SequencerModel *sequencerModel;
 
-@property (weak, nonatomic) IBOutlet UISlider *MasterVolumeSlider;
-@property (weak, nonatomic) IBOutlet UILabel *masterVolumeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
-@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *pausButton;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *metronomeButton;
+@property (weak, nonatomic) IBOutlet UITextView *bpmTextView;
+@property (weak, nonatomic) IBOutlet UIStepper *bpmStepper;
+
 
 @end
 
-@implementation MixerViewController
+@implementation StepSequencerViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-//    [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     self.tracksSingleton = [TracksSingleton sharedModel];
     self.sequencerModel = [SequencerModel sharedModel];
-    
-    // Rotate the slider to have a verticle orientation
-    CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
-    self.MasterVolumeSlider.transform = trans;
-    [self.MasterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
-    [self modifyMasterVolume: self.MasterVolumeSlider.value];
+    [self setBpmTextView];
+    [self.bpmStepper setValue:[self.sequencerModel bpm]];
+
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
-        
     }
     else{
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
-        
     }
     
-    
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -60,7 +51,7 @@
 
 #pragma mark - transport button events these are the actions associated to the transport buttons (play, pause, stop, and record)
 
-- (IBAction)togglePlayButton:(id)sender {
+- (IBAction)playButtonPressed:(id)sender {
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
         
@@ -69,13 +60,20 @@
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     }
     self.sequencerModel.play = !self.sequencerModel.play;
-}
-- (IBAction)pauseButtonPressed:(id)sender {
-    [self stopPlaying];
+
 }
 
+- (IBAction)pauseButtonPressed:(id)sender {
+    [self stopPlaying];
+
+}
 - (IBAction)stopButtonPressed:(id)sender {
     [self stopPlaying];
+
+}
+
+
+- (IBAction)metronomeButtonPressed:(id)sender {
 }
 
 - (void) stopPlaying{
@@ -83,26 +81,18 @@
     [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
 }
 
-- (IBAction)sliderChangedMasterVolume:(id)sender {
-    [self modifyMasterVolume: self.MasterVolumeSlider.value];
-    [self.tracksSingleton setMasterVolume:self.MasterVolumeSlider.value];
 
+
+#pragma mark - Playback settings: This is settings such as volume and bpm modifier events are handled
+
+- (IBAction)stepBpm:(id)sender {
+    [self.sequencerModel setBpm:self.bpmStepper.value];
+    [self setBpmTextView];
 }
 
-
-- (void) modifyMasterVolume: (float) volume{
-    NSString *percentSign = @"%";
-    self.masterVolumeLabel.text = [NSString stringWithFormat:@"%.00f%@", volume*100, percentSign];
+- (void) setBpmTextView{
+    self.bpmTextView.text = [NSString stringWithFormat: @"%ld", (long)self.sequencerModel.bpm];
 }
-
-- (void) setMasterVolume: (float) volume {
-    self.MasterVolumeSlider.value = volume/100;
-    [self.tracksSingleton setMasterVolume:volume];
-    [self modifyMasterVolume: self.MasterVolumeSlider.value];
-}
-
-
-
 /*
 #pragma mark - Navigation
 

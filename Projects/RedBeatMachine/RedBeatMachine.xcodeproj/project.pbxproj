@@ -32,6 +32,7 @@
 		2A951C081CD9EE3400D014ED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C071CD9EE3400D014ED /* AudioToolbox.framework */; };
 		2A951C0A1CD9EE3B00D014ED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C091CD9EE3B00D014ED /* AVFoundation.framework */; };
 		2A951C0C1CD9EE4E00D014ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C0B1CD9EE4E00D014ED /* Foundation.framework */; };
+		2A951C0F1CDA110800D014ED /* StepSequencerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		2A951C071CD9EE3400D014ED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2A951C091CD9EE3B00D014ED /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2A951C0B1CD9EE4E00D014ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2A951C0D1CDA110800D014ED /* StepSequencerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSequencerViewController.h; sourceTree = "<group>"; };
+		2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSequencerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +225,8 @@
 				2A951BF61CD9B9A200D014ED /* MixerTracksCollectionViewController.m */,
 				2A951BF81CD9C4C100D014ED /* MixerViewController.h */,
 				2A951BF91CD9C4C100D014ED /* MixerViewController.m */,
+				2A951C0D1CDA110800D014ED /* StepSequencerViewController.h */,
+				2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A951C0F1CDA110800D014ED /* StepSequencerViewController.m in Sources */,
 				2A4EC16B1CD5C49700F0A58F /* AppDelegate.m in Sources */,
 				2A951BF71CD9B9A200D014ED /* MixerTracksCollectionViewController.m in Sources */,
 				2A29DA031CD85EC30014E465 /* SequencerModel.m in Sources */,

@@ -26,14 +26,14 @@
 @property (weak, nonatomic) IBOutlet UITextView *bmpTextView;
 
 // Outlets for the Drum Pad buttons
-@property (weak, nonatomic) IBOutlet UIButton *pad0Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad1Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad2Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad3Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad4Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad5Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad6Button;
-@property (weak, nonatomic) IBOutlet UIButton *pad7Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad0Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad1Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad2Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad3Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad4Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad5Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad6Button;
+//@property (weak, nonatomic) IBOutlet UIButton *pad7Button;
 
 @end
 
@@ -44,15 +44,18 @@
 - (void)viewWillAppear:(BOOL)animated {
 //    [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     self.tracksSingleton = [TracksSingleton sharedModel];
     self.sequencerModel = [SequencerModel sharedModel];
     [self setBpmTextView];
+    [self.bpmStepper setValue:[self.sequencerModel bpm]];
+    
+    
+    
     [self.masterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
     [self modifyMasterVolume:[self.tracksSingleton masterVolume]];
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
-        
     }
     else{
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
@@ -69,14 +72,14 @@
 
 // update the names of each of the button pads to match the assigned sound sample
 - (void) updatePadNames{
-    [self.pad0Button setTitle:[self.tracksSingleton returnTrackName:0] forState:UIControlStateNormal];
-    [self.pad1Button setTitle:[self.tracksSingleton returnTrackName:1] forState:UIControlStateNormal];
-    [self.pad2Button setTitle:[self.tracksSingleton returnTrackName:2] forState:UIControlStateNormal];
-    [self.pad3Button setTitle:[self.tracksSingleton returnTrackName:3] forState:UIControlStateNormal];
-    [self.pad4Button setTitle:[self.tracksSingleton returnTrackName:4] forState:UIControlStateNormal];
-    [self.pad5Button setTitle:[self.tracksSingleton returnTrackName:5] forState:UIControlStateNormal];
-    [self.pad6Button setTitle:[self.tracksSingleton returnTrackName:6] forState:UIControlStateNormal];
-    [self.pad7Button setTitle:[self.tracksSingleton returnTrackName:7] forState:UIControlStateNormal];
+    [self.pad0 setTitle:[self.tracksSingleton returnTrackName:0] forState:UIControlStateNormal];
+    [self.pad1 setTitle:[self.tracksSingleton returnTrackName:1] forState:UIControlStateNormal];
+    [self.pad2 setTitle:[self.tracksSingleton returnTrackName:2] forState:UIControlStateNormal];
+    [self.pad3 setTitle:[self.tracksSingleton returnTrackName:3] forState:UIControlStateNormal];
+    [self.pad4 setTitle:[self.tracksSingleton returnTrackName:4] forState:UIControlStateNormal];
+    [self.pad5 setTitle:[self.tracksSingleton returnTrackName:5] forState:UIControlStateNormal];
+    [self.pad6 setTitle:[self.tracksSingleton returnTrackName:6] forState:UIControlStateNormal];
+    [self.pad7 setTitle:[self.tracksSingleton returnTrackName:7] forState:UIControlStateNormal];
 
 }
 
