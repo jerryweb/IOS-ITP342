@@ -29,9 +29,9 @@
     self = [super init];
     if (self) {
         self.play = NO;
+        self.record = NO;
+        self.metronome = NO;
         self.bpm = 90;
-        
-        
     }
     return self;
 }

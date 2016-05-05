@@ -12,7 +12,7 @@
 
 @interface MixerTrackCollectionViewCell()
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
-@property (strong, nonatomic) SequencerModel *sequencerModel;
+//@property (strong, nonatomic) SequencerModel *sequencerModel;
 
 @property (weak, nonatomic) IBOutlet UILabel *sampleNameLabel;
 @property (weak, nonatomic) IBOutlet UISlider *panSlider;
@@ -42,6 +42,16 @@
     self.sampleNameLabel.text = track.sampleName;
     self.panSlider.value = track.trackPan;
     self.volumeSlider.value = track.trackVolume;
+    
+    if([[self.tracksSingleton returnTrack:self.mixerTrackNumber] muted]){
+        
+        [self.muteButton setImage:[UIImage imageNamed:@"mute.png"] forState:UIControlStateNormal];
+        
+    }
+    else {
+        [self.muteButton setImage:[UIImage imageNamed:@"volume.png"] forState:UIControlStateNormal];
+    }
+
 }
 
 

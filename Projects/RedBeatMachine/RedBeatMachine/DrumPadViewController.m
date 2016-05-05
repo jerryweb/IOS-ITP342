@@ -22,18 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
+@property (weak, nonatomic) IBOutlet UIButton *metronomeButton;
 @property (weak, nonatomic) IBOutlet UIStepper *bpmStepper;
 @property (weak, nonatomic) IBOutlet UITextView *bmpTextView;
-
-// Outlets for the Drum Pad buttons
-//@property (weak, nonatomic) IBOutlet UIButton *pad0Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad1Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad2Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad3Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad4Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad5Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad6Button;
-//@property (weak, nonatomic) IBOutlet UIButton *pad7Button;
 
 @end
 
@@ -54,12 +45,8 @@
     
     [self.masterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
     [self modifyMasterVolume:[self.tracksSingleton masterVolume]];
-    if(!self.sequencerModel.play){
-        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
-    }
-    else{
-        [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
-    }
+
+    [self setupButtons];
     
     [self updatePadNames];
 }
@@ -124,6 +111,29 @@
 }
 
 
+- (IBAction)toggleRecordButton:(id)sender {
+    if(!self.sequencerModel.record){
+        [self.recordButton setImage:[UIImage imageNamed:@"recordActive.png"] forState:UIControlStateNormal];
+        
+    }
+    else {
+        [self.recordButton setImage:[UIImage imageNamed:@"record.png"] forState:UIControlStateNormal];
+    }
+    self.sequencerModel.record = !self.sequencerModel.record;
+}
+
+- (IBAction)toggleMetronomeButton:(id)sender {
+    
+    if(!self.sequencerModel.metronome){
+        [self.metronomeButton setImage:[UIImage imageNamed:@"metronome_active.png"] forState:UIControlStateNormal];
+        
+    }
+    else {
+        [self.metronomeButton setImage:[UIImage imageNamed:@"metronome.png"] forState:UIControlStateNormal];
+    }
+    self.sequencerModel.metronome = !self.sequencerModel.metronome;
+}
+
 - (IBAction)pauseButtonPressed:(id)sender {
     [self stopPlaying];
 }
@@ -138,6 +148,36 @@
 }
 
 
+
+// Set the correct button images depending upon the state of the app
+- (void) setupButtons {
+    
+    // play button
+    if(!self.sequencerModel.play){
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
+    }
+    
+    // record button
+    if(!self.sequencerModel.record){
+        [self.recordButton setImage:[UIImage imageNamed:@"record.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.recordButton setImage:[UIImage imageNamed:@"recordActive.png"] forState:UIControlStateNormal];
+    }
+    
+    // metronome button
+    if(!self.sequencerModel.metronome){
+        [self.metronomeButton setImage:[UIImage imageNamed:@"metronome.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.metronomeButton setImage:[UIImage imageNamed:@"metronome_active.png"] forState:UIControlStateNormal];
+    }
+    
+}
+
 #pragma mark - Triggering pad to play sounds
 
 // When touched, the pad will play the sample attached to the respective track signleton. Example, pad 0 will play the sound set to track 0
@@ -146,7 +186,6 @@
 
 - (IBAction)triggerPad0:(id)sender {
     [self.tracksSingleton playTrackSample:0];
-//    [self.pad0 setTitle:@"drum" forState:UIControlStateNormal];
 }
 
 - (IBAction)triggerPad1:(id)sender {

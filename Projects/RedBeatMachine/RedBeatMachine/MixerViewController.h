@@ -10,7 +10,6 @@
 
 @interface MixerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>{
     IBOutlet UICollectionView *mixerTracks;
-    NSMutableArray *mainArray;
 }
 
 @end

@@ -34,6 +34,7 @@
 		2A951C0F1CDA110800D014ED /* StepSequencerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */; };
 		2A951C121CDA88F100D014ED /* SoundDatabaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C111CDA88F100D014ED /* SoundDatabaseTableViewController.m */; };
 		2A951C181CDAF34200D014ED /* MixerTrackCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C171CDAF34200D014ED /* MixerTrackCollectionViewCell.m */; };
+		2A951C1B1CDB230400D014ED /* TrackNameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C1A1CDB230400D014ED /* TrackNameCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		2A951C111CDA88F100D014ED /* SoundDatabaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundDatabaseTableViewController.m; sourceTree = "<group>"; };
 		2A951C161CDAF34200D014ED /* MixerTrackCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerTrackCollectionViewCell.h; sourceTree = "<group>"; };
 		2A951C171CDAF34200D014ED /* MixerTrackCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerTrackCollectionViewCell.m; sourceTree = "<group>"; };
+		2A951C191CDB230400D014ED /* TrackNameCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackNameCollectionViewCell.h; sourceTree = "<group>"; };
+		2A951C1A1CDB230400D014ED /* TrackNameCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackNameCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 				2A951C111CDA88F100D014ED /* SoundDatabaseTableViewController.m */,
 				2A951C161CDAF34200D014ED /* MixerTrackCollectionViewCell.h */,
 				2A951C171CDAF34200D014ED /* MixerTrackCollectionViewCell.m */,
+				2A951C191CDB230400D014ED /* TrackNameCollectionViewCell.h */,
+				2A951C1A1CDB230400D014ED /* TrackNameCollectionViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				2A951BFA1CD9C4C100D014ED /* MixerViewController.m in Sources */,
 				2A29DA061CD882120014E465 /* TrackModel.m in Sources */,
 				2A4EC1681CD5C49700F0A58F /* main.m in Sources */,
+				2A951C1B1CDB230400D014ED /* TrackNameCollectionViewCell.m in Sources */,
 				2A951C121CDA88F100D014ED /* SoundDatabaseTableViewController.m in Sources */,
 				2A951C181CDAF34200D014ED /* MixerTrackCollectionViewCell.m in Sources */,
 				2A4919F31CD8488100D24710 /* DrumPadViewController.m in Sources */,

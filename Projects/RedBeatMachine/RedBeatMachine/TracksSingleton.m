@@ -68,8 +68,32 @@
     {
         TrackModel *track = [TrackModel new];
         [track initTrack];
-        if(i ==2){
+        if(i ==1){
             [track setSampleName:@"Cap_Snr"];
+        }
+        else if (i == 2){
+            [track setSampleName:@"Hi_Shk3"];
+
+        }
+        else if (i == 3){
+            [track setSampleName:@"Tmb_3"];
+            
+        }
+        else if (i == 4){
+            [track setSampleName:@"Perfect 808"];
+            
+        }
+        else if (i == 5){
+            [track setSampleName:@"Bngo_3"];
+            
+        }
+        else if (i == 6){
+            [track setSampleName:@"Wan_Ohh"];
+            
+        }
+        else if (i == 7){
+            [track setSampleName:@"2uicksilver 808 single"];
+            
         }
         [_tracks addObject:track];
 

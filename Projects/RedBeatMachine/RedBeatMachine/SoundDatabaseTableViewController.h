@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SoundDatabaseTableViewController : UITableViewController
+@interface SoundDatabaseTableViewController : UITableViewController 
 
 @end

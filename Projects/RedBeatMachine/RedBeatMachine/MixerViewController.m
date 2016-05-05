@@ -26,11 +26,36 @@
 
 @implementation MixerViewController
 
+
+- (void) viewDidLoad {
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
+    self.tracksSingleton = [TracksSingleton sharedModel];
+    self.sequencerModel = [SequencerModel sharedModel];
+    
+    // Rotate the slider to have a verticle orientation
+    CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
+    self.MasterVolumeSlider.transform = trans;
+    
+    // Update slider value and master volume label to the appropriate value set in the track singleton
+    [self.MasterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
+    [self modifyMasterVolume: self.MasterVolumeSlider.value];
+    
+    // Update the play button to either active or ready image state depending on if the user has pressed play in a different UIView
+    if(!self.sequencerModel.play){
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        
+    }
+    else{
+        [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
+        
+    }
+
+}
+
+
 - (void)viewWillAppear:(BOOL)animated {
     // Do any additional setup after loading the view.
-    
-    mainArray = [[NSMutableArray alloc] init];
-    
+        
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     self.tracksSingleton = [TracksSingleton sharedModel];
     self.sequencerModel = [SequencerModel sharedModel];
@@ -53,7 +78,7 @@
         
     }
     
-    
+    [mixerTracks reloadData];
 }
 
 
