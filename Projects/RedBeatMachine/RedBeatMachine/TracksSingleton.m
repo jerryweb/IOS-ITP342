@@ -77,32 +77,58 @@
 }
 
 - (NSString *) returnTrackName: (NSUInteger) index{
-    if(index >= 0 || index < self.tracks.count){
+    if(index >= 0 && index < self.tracks.count){
         return [self.tracks[index] sampleName];
     }
     else return NULL;
 }
 
-//
-//- (void) setMasterVolume: (float) volume{
-//    self.masterVolume = volume;
-//}
+- (TrackModel *) returnTrack: (NSUInteger) index{
+    if(index >= 0 && index < self.tracks.count){
+        return self.tracks[index];
+    }
+    else return NULL;
+}
 
+
+#pragma mark - Public access methods to modify volume, pan and mute settings for each track
+
+- (void) modifyTrackPan: (NSInteger) trackNumber : (float) pan{
+    [self.tracks[trackNumber] setTrackPan:pan];
+
+}
+
+- (void) modifyTrackVolume: (NSInteger) trackNumber : (float) volume{
+    [self.tracks[trackNumber] setTrackVolume:volume];
+}
+
+- (void) toggleTrackMute: (NSInteger) trackNumer : (BOOL) mute{
+    [self.tracks[trackNumer] setMuted:mute];
+}
 
 #pragma mark - play tracks
 
 // This method plays the samples according the track that is called
 - (void) playTrackSample: (NSInteger) trackNumber{
     
-    
+    // Connect the sampleName and file type with the file Path and URL
     NSString *trackFilePath = [[NSBundle mainBundle]pathForResource:[self.tracks[trackNumber] sampleName] ofType:[self.tracks[trackNumber] sampleFileType]];
     NSURL *trackURL = [NSURL fileURLWithPath:trackFilePath];
+    
+    // Remake the AVAudioPlayer; this prevents sluggish response
     player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
     
     // set volume output of track
     
-    [player setVolume: self.masterVolume];
-    [player play];
+    [player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+    
+    // set pan of track output
+    [player setPan:[self.tracks[trackNumber] trackPan]];
+    
+    // play sample if the track is not muted
+    if(![self.tracks[trackNumber] muted]){
+        [player play];
+    }
 
 }
 

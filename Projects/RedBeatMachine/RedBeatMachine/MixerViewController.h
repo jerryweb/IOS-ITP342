@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MixerViewController : UIViewController
+@interface MixerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>{
+    IBOutlet UICollectionView *mixerTracks;
+    NSMutableArray *mainArray;
+}
 
 @end

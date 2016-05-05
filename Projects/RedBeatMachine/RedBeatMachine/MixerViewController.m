@@ -9,6 +9,7 @@
 #import "MixerViewController.h"
 #import "TracksSingleton.h"
 #import "SequencerModel.h"
+#import "MixerTrackCollectionViewCell.h"
 
 
 @interface MixerViewController ()
@@ -26,8 +27,9 @@
 @implementation MixerViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-//    [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    mainArray = [[NSMutableArray alloc] init];
     
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     self.tracksSingleton = [TracksSingleton sharedModel];
@@ -36,8 +38,12 @@
     // Rotate the slider to have a verticle orientation
     CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
     self.MasterVolumeSlider.transform = trans;
+    
+    // Update slider value and master volume label to the appropriate value set in the track singleton
     [self.MasterVolumeSlider setValue:[self.tracksSingleton masterVolume]];
     [self modifyMasterVolume: self.MasterVolumeSlider.value];
+    
+    // Update the play button to either active or ready image state depending on if the user has pressed play in a different UIView
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         
@@ -56,6 +62,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+#pragma mark - Set up the embedded collectionView for each of the mixer tracks
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 8;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    MixerTrackCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TrackCell" forIndexPath:indexPath];
+    
+    // Configure the cell
+    [cell setupCell:[self.tracksSingleton returnTrack:indexPath.row] :indexPath.row];
+    return cell;
+}
+
+
+
+
 
 
 #pragma mark - transport button events these are the actions associated to the transport buttons (play, pause, stop, and record)

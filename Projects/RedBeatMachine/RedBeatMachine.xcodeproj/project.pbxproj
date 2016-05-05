@@ -21,7 +21,6 @@
 		2A4EC1761CD5C49700F0A58F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EC1741CD5C49700F0A58F /* LaunchScreen.storyboard */; };
 		2A4EC1811CD5C49700F0A58F /* RedBeatMachineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EC1801CD5C49700F0A58F /* RedBeatMachineTests.m */; };
 		2A4EC18C1CD5C49700F0A58F /* RedBeatMachineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EC18B1CD5C49700F0A58F /* RedBeatMachineUITests.m */; };
-		2A951BF71CD9B9A200D014ED /* MixerTracksCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951BF61CD9B9A200D014ED /* MixerTracksCollectionViewController.m */; };
 		2A951BFA1CD9C4C100D014ED /* MixerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951BF91CD9C4C100D014ED /* MixerViewController.m */; };
 		2A951BFC1CD9C7BE00D014ED /* Tmb_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951BFB1CD9C7BE00D014ED /* Tmb_3.wav */; };
 		2A951BFE1CD9C7E700D014ED /* Wan_Ohh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A951BFD1CD9C7E700D014ED /* Wan_Ohh.wav */; };
@@ -33,6 +32,8 @@
 		2A951C0A1CD9EE3B00D014ED /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C091CD9EE3B00D014ED /* AVFoundation.framework */; };
 		2A951C0C1CD9EE4E00D014ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A951C0B1CD9EE4E00D014ED /* Foundation.framework */; };
 		2A951C0F1CDA110800D014ED /* StepSequencerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */; };
+		2A951C121CDA88F100D014ED /* SoundDatabaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C111CDA88F100D014ED /* SoundDatabaseTableViewController.m */; };
+		2A951C181CDAF34200D014ED /* MixerTrackCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A951C171CDAF34200D014ED /* MixerTrackCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +79,6 @@
 		2A4EC1871CD5C49700F0A58F /* RedBeatMachineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedBeatMachineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4EC18B1CD5C49700F0A58F /* RedBeatMachineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedBeatMachineUITests.m; sourceTree = "<group>"; };
 		2A4EC18D1CD5C49700F0A58F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A951BF51CD9B9A200D014ED /* MixerTracksCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerTracksCollectionViewController.h; sourceTree = "<group>"; };
-		2A951BF61CD9B9A200D014ED /* MixerTracksCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerTracksCollectionViewController.m; sourceTree = "<group>"; };
 		2A951BF81CD9C4C100D014ED /* MixerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerViewController.h; sourceTree = "<group>"; };
 		2A951BF91CD9C4C100D014ED /* MixerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerViewController.m; sourceTree = "<group>"; };
 		2A951BFB1CD9C7BE00D014ED /* Tmb_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tmb_3.wav; sourceTree = "<group>"; };
@@ -93,6 +92,10 @@
 		2A951C0B1CD9EE4E00D014ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A951C0D1CDA110800D014ED /* StepSequencerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSequencerViewController.h; sourceTree = "<group>"; };
 		2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSequencerViewController.m; sourceTree = "<group>"; };
+		2A951C101CDA88F100D014ED /* SoundDatabaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundDatabaseTableViewController.h; sourceTree = "<group>"; };
+		2A951C111CDA88F100D014ED /* SoundDatabaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundDatabaseTableViewController.m; sourceTree = "<group>"; };
+		2A951C161CDAF34200D014ED /* MixerTrackCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerTrackCollectionViewCell.h; sourceTree = "<group>"; };
+		2A951C171CDAF34200D014ED /* MixerTrackCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerTrackCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,12 +224,14 @@
 			children = (
 				2A4919F11CD8488100D24710 /* DrumPadViewController.h */,
 				2A4919F21CD8488100D24710 /* DrumPadViewController.m */,
-				2A951BF51CD9B9A200D014ED /* MixerTracksCollectionViewController.h */,
-				2A951BF61CD9B9A200D014ED /* MixerTracksCollectionViewController.m */,
 				2A951BF81CD9C4C100D014ED /* MixerViewController.h */,
 				2A951BF91CD9C4C100D014ED /* MixerViewController.m */,
 				2A951C0D1CDA110800D014ED /* StepSequencerViewController.h */,
 				2A951C0E1CDA110800D014ED /* StepSequencerViewController.m */,
+				2A951C101CDA88F100D014ED /* SoundDatabaseTableViewController.h */,
+				2A951C111CDA88F100D014ED /* SoundDatabaseTableViewController.m */,
+				2A951C161CDAF34200D014ED /* MixerTrackCollectionViewCell.h */,
+				2A951C171CDAF34200D014ED /* MixerTrackCollectionViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -383,12 +388,13 @@
 			files = (
 				2A951C0F1CDA110800D014ED /* StepSequencerViewController.m in Sources */,
 				2A4EC16B1CD5C49700F0A58F /* AppDelegate.m in Sources */,
-				2A951BF71CD9B9A200D014ED /* MixerTracksCollectionViewController.m in Sources */,
 				2A29DA031CD85EC30014E465 /* SequencerModel.m in Sources */,
 				2A29D9FB1CD857450014E465 /* TracksSingleton.m in Sources */,
 				2A951BFA1CD9C4C100D014ED /* MixerViewController.m in Sources */,
 				2A29DA061CD882120014E465 /* TrackModel.m in Sources */,
 				2A4EC1681CD5C49700F0A58F /* main.m in Sources */,
+				2A951C121CDA88F100D014ED /* SoundDatabaseTableViewController.m in Sources */,
+				2A951C181CDAF34200D014ED /* MixerTrackCollectionViewCell.m in Sources */,
 				2A4919F31CD8488100D24710 /* DrumPadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

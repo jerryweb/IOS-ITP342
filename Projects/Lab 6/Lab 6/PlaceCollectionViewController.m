@@ -96,6 +96,7 @@ static NSString * const reuseIdentifier = @"PlaceItemCell";
     
     [cell setPlace:place];
     
+    
     return cell;
 }
 

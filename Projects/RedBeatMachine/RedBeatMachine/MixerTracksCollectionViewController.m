@@ -9,6 +9,8 @@
 #import "MixerTracksCollectionViewController.h"
 #import "TracksSingleton.h"
 #import "SequencerModel.h"
+#import "MixerTrackCollectionViewCell.h"
+
 @interface MixerTracksCollectionViewController ()
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
 @property (strong, nonatomic) SequencerModel *sequencerModel;
@@ -58,7 +60,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TrackCell" forIndexPath:indexPath];
+    MixerTrackCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TrackCell" forIndexPath:indexPath];
     
     // Configure the cell
     
