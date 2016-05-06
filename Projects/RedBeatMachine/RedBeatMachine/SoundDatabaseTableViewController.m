@@ -7,8 +7,13 @@
 //
 
 #import "SoundDatabaseTableViewController.h"
+#import "TracksSingleton.h"
+#import "SampleTableViewCell.h"
+
 
 @interface SoundDatabaseTableViewController ()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *trackSampleSelector;
+@property (strong, nonatomic) TracksSingleton *tracksSingleton;
 
 @end
 
@@ -19,10 +24,12 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+    self.tracksSingleton = [TracksSingleton sharedModel];
+    [self.trackSampleSelector setSelectedSegmentIndex:0];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -36,18 +43,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return [self.tracksSingleton returnSizeOfSampleList];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SampleCell" forIndexPath:indexPath];
+    SampleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SampleCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSDictionary *sample = [self.tracksSingleton returnSampleFromListOfSamples: indexPath.row];
+    cell.sampleName = sample[kSampleNameKey];
+    cell.sampleFileType = sample[kSampleFileTypeKey];
+    
+    [cell formatCell];
     
     return cell;
 }
 
+- (IBAction)trackSegmentedDisplayChanged:(id)sender {
+    [self.tracksSingleton setSoundDatabaseSegementedTrackValue:self.trackSampleSelector.selectedSegmentIndex];
+}
 
 /*
 // Override to support conditional editing of the table view.

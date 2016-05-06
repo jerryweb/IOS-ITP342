@@ -376,7 +376,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4f-KB-UWP" userLabel="VeriticalPanSlider">
                                                     <rect key="frame" x="131" y="50" width="42" height="149"/>
                                                     <subviews>
-                                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NgS-t7-EMl" userLabel="PanSlider">
+                                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NgS-t7-EMl" userLabel="PanSlider">
                                                             <rect key="frame" x="-38" y="60" width="118" height="31"/>
                                                             <color key="thumbTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <connections>
@@ -553,11 +553,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SampleCell" rowHeight="74" id="UCX-i5-dd1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SampleCell" rowHeight="74" id="UCX-i5-dd1" customClass="SampleTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="667" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UCX-i5-dd1" id="hyu-A3-AIm">
-                                    <rect key="frame" x="0.0" y="0.0" width="667" height="74"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OW3-Fo-H38" userLabel="SampleNameLabel">
@@ -572,9 +572,12 @@
                                                 <constraint firstAttribute="width" constant="50" id="Bkd-16-2D8"/>
                                             </constraints>
                                             <state key="normal" image="hearSample"/>
+                                            <connections>
+                                                <action selector="previewSampleButtonPressed:" destination="UCX-i5-dd1" eventType="touchUpInside" id="Hir-yb-jEL"/>
+                                            </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="x6U-r5-kf9" firstAttribute="trailing" secondItem="hyu-A3-AIm" secondAttribute="trailingMargin" id="3DO-W7-JZ2"/>
                                         <constraint firstItem="x6U-r5-kf9" firstAttribute="leading" secondItem="OW3-Fo-H38" secondAttribute="trailing" constant="8" symbolic="YES" id="7dB-pz-47y"/>
@@ -585,6 +588,11 @@
                                         <constraint firstItem="OW3-Fo-H38" firstAttribute="top" secondItem="hyu-A3-AIm" secondAttribute="topMargin" id="yGT-PR-SYR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="preivewSampleButton" destination="x6U-r5-kf9" id="nhy-kD-caF"/>
+                                    <outlet property="sampleNameLabel" destination="OW3-Fo-H38" id="Czj-Ja-xdh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -594,8 +602,23 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Pr2-u1-mMg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="RAb-bq-5LA">
+                            <view key="customView" contentMode="scaleToFill" id="ywP-h0-OOM">
+                                <rect key="frame" x="20" y="5" width="148" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Track To Modify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-MS-LHF">
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="33"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="VBY-Qq-I7m" userLabel="TrackSelectorSegmentedControl">
-                            <rect key="frame" x="90" y="7" width="487" height="30"/>
+                            <rect key="frame" x="174" y="7" width="473" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Track 0"/>
@@ -607,6 +630,9 @@
                                 <segment title="Track 6"/>
                                 <segment title="Track 7"/>
                             </segments>
+                            <connections>
+                                <action selector="trackSegmentedDisplayChanged:" destination="2T6-VY-PvO" eventType="valueChanged" id="4lA-fx-gw6"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -616,6 +642,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
+                    <connections>
+                        <outlet property="trackSampleSelector" destination="VBY-Qq-I7m" id="V4a-iS-EzA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GF-WF-2D8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -792,6 +821,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xEF-Vh-w9o" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sound Database" image="sequencer" id="xij-ac-6Kg"/>
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8xZ-qx-eLm">
