@@ -118,12 +118,13 @@
 - (IBAction)togglePlayButton:(id)sender {
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
-        
+        [self.sequencerModel startPlayback];
+        self.sequencerModel.play = YES;
     }
     else {
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self stopPlaying];
     }
-    self.sequencerModel.play = !self.sequencerModel.play;
 }
 - (IBAction)pauseButtonPressed:(id)sender {
     [self stopPlaying];
@@ -134,8 +135,11 @@
 }
 
 - (void) stopPlaying{
-    self.sequencerModel.play = NO;
-    [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    if(self.sequencerModel.play){
+        self.sequencerModel.play = NO;
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self.sequencerModel stopPlayback];
+    }
 }
 
 - (IBAction)sliderChangedMasterVolume:(id)sender {

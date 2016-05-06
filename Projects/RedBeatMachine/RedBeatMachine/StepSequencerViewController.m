@@ -7,7 +7,6 @@
 //
 
 #import "StepSequencerViewController.h"
-#import "TrackNameCollectionViewCell.h"
 #import "TracksSingleton.h"
 #import "SequencerModel.h"
 
@@ -44,9 +43,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     // Do any additional setup after loading the view.
-
-    self.tracksSingleton = [TracksSingleton sharedModel];
-    self.sequencerModel = [SequencerModel sharedModel];
     [self setBpmTextView];
     [self.bpmStepper setValue:[self.sequencerModel bpm]];
 
@@ -56,36 +52,23 @@
     else{
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
     }
-    
-    [trackNameAndSequenceCollectionView reloadData];
-    
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    [self didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Set up the embedded collectionView for each of the mixer tracks
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 8;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    TrackNameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TrackNameCell" forIndexPath:indexPath];
-    
-    // Configure the cell
-    [cell setupTrackNameCell:[self.tracksSingleton returnTrack:indexPath.row] :indexPath.row];
-    
-    
-    return cell;
-}
-
+//
+//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    TrackSequenceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TrackSequenceCell" forIndexPath:indexPath];
+//    
+//    // Configure the cell
+//    [cell setupTrackSequenceCell];
+//    
+//    
+//    return cell;
+//}
 
 
 #pragma mark - transport button events these are the actions associated to the transport buttons (play, pause, stop, and record)
@@ -93,12 +76,13 @@
 - (IBAction)playButtonPressed:(id)sender {
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
-        
+        [self.sequencerModel startPlayback];
+        self.sequencerModel.play = YES;
     }
     else {
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self stopPlaying];
     }
-    self.sequencerModel.play = !self.sequencerModel.play;
 
 }
 
@@ -115,18 +99,23 @@
 - (IBAction)metronomeButtonPressed:(id)sender {
     if(!self.sequencerModel.metronome){
         [self.metronomeButton setImage:[UIImage imageNamed:@"metronome_active.png"] forState:UIControlStateNormal];
-        
+        [self.sequencerModel setMetronome:YES];
+
     }
     else {
         [self.metronomeButton setImage:[UIImage imageNamed:@"metronome.png"] forState:UIControlStateNormal];
+        [self.sequencerModel setMetronome:NO];
+
     }
-    self.sequencerModel.metronome = !self.sequencerModel.metronome;
     
 }
 
 - (void) stopPlaying{
-    self.sequencerModel.play = NO;
-    [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    if(self.sequencerModel.play){
+        self.sequencerModel.play = NO;
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self.sequencerModel stopPlayback];
+    }
 }
 
 

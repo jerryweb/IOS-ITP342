@@ -8,7 +8,7 @@
 
 #import "MixerTrackCollectionViewCell.h"
 #import "TracksSingleton.h"
-#import "SequencerModel.h"
+//#import "SequencerModel.h"
 
 @interface MixerTrackCollectionViewCell()
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (weak, nonatomic) IBOutlet UILabel *volumeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *muteButton;
+@property (strong, nonatomic) NSMutableArray * trackLabelArray;
 // Identifies which track the audio controls correspond to e.g. track 0. Should not be changed after set for the first time
 @property (nonatomic) NSInteger mixerTrackNumber;
 
@@ -31,7 +32,6 @@
 // Similar to an init method, this builds and formats the cell, setting all of the outlet values and creating the trackSingleton.
 - (void) setupCell: (TrackModel *) track : (NSInteger) trackNumber{
     self.tracksSingleton = [TracksSingleton sharedModel];
-    
     self.mixerTrackNumber = trackNumber;
     
     // trasform the sliders to verticle orientation

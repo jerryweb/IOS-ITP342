@@ -15,7 +15,17 @@
 
 
 @interface TracksSingleton(){
-    AVAudioPlayer *player;
+    AVAudioPlayer *track0Player;
+    AVAudioPlayer *track1Player;
+    AVAudioPlayer *track2Player;
+    AVAudioPlayer *track3Player;
+    AVAudioPlayer *track4Player;
+    AVAudioPlayer *track5Player;
+    AVAudioPlayer *track6Player;
+    AVAudioPlayer *track7Player;
+    AVAudioPlayer *metronomePlayer;
+
+
 }
 
 @property (strong, nonatomic) SequencerModel *sequencerModel;
@@ -53,7 +63,7 @@
 {
     self = [super init];
     if (self) {
-        self.sequencerModel = [SequencerModel sharedModel];
+//        self.sequencerModel = [SequencerModel sharedModel];
         
         [self generateListOfSounds];
         
@@ -77,9 +87,14 @@
     NSDictionary *sound_6 = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bngo_3", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_7 = [[NSDictionary alloc] initWithObjectsAndKeys:@"Perfect 808", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_8 = [[NSDictionary alloc] initWithObjectsAndKeys:@"2uicksilver 808 single", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
+    NSDictionary *sound_9 = [[NSDictionary alloc] initWithObjectsAndKeys:@"lex_rim", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
+    NSDictionary *sound_10 = [[NSDictionary alloc] initWithObjectsAndKeys:@"CB_Hat", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
+    NSDictionary *sound_11 = [[NSDictionary alloc] initWithObjectsAndKeys:@"CB_Kick", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
+    NSDictionary *sound_12 = [[NSDictionary alloc] initWithObjectsAndKeys:@"vybe809Kick", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
+
 
     
-    _listOfSamples = [[NSMutableArray alloc] initWithObjects:sound_0, sound_1, sound_2, sound_3, sound_4, sound_5, sound_6, sound_7, sound_8, nil];
+    _listOfSamples = [[NSMutableArray alloc] initWithObjects:sound_0, sound_1, sound_2, sound_3, sound_4, sound_5, sound_6, sound_7, sound_8, sound_9, sound_10, sound_11, sound_12, nil];
 }
 
 // Create 8 track objects and add them to an array
@@ -156,23 +171,170 @@
 - (void) playTrackSample: (NSInteger) trackNumber{
     
     // Connect the sampleName and file type with the file Path and URL
-    NSString *trackFilePath = [[NSBundle mainBundle]pathForResource:[self.tracks[trackNumber] sampleName] ofType:[self.tracks[trackNumber] sampleFileType]];
-    NSURL *trackURL = [NSURL fileURLWithPath:trackFilePath];
-    
-    // Remake the AVAudioPlayer; this prevents sluggish response
-    player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
-    
-    // set volume output of track
-    
-    [player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
-    
-    // set pan of track output
-    [player setPan:[self.tracks[trackNumber] trackPan]];
-    
-    // play sample if the track is not muted
-    if(![self.tracks[trackNumber] muted]){
-        [player play];
+    NSString *trackFilePath;
+    NSURL *trackURL;
+    if(trackNumber == 8){
+        trackFilePath = [[NSBundle mainBundle]pathForResource:@"lex_rim" ofType:@"wav"];
+        trackURL = [NSURL fileURLWithPath:trackFilePath];
     }
+    else{
+        trackFilePath = [[NSBundle mainBundle]pathForResource:[self.tracks[trackNumber] sampleName] ofType:[self.tracks[trackNumber] sampleFileType]];
+        trackURL = [NSURL fileURLWithPath:trackFilePath];
+    }
+    
+    
+    switch (trackNumber) {
+        case 0:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track0Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            [track0Player stop];
+            // set volume output of track
+            
+            [track0Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track0Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track0Player play];
+            }
+            break;
+            
+        case 1:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track1Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track1Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track1Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track1Player play];
+            }
+            break;
+
+        case 2:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track2Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track2Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track2Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track2Player play];
+            }
+            break;
+
+        case 3:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track3Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track3Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track3Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track3Player play];
+            }
+            break;
+        case 4:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track4Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track4Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track4Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track4Player play];
+            }
+            break;
+
+        case 5:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track5Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track5Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track5Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track5Player play];
+            }
+            break;
+
+        case 6:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track6Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track6Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track6Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track6Player play];
+            }
+            break;
+
+        case 7:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            track7Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [track7Player setVolume: ([self.tracks[trackNumber] trackVolume])*(self.masterVolume)];
+            
+            // set pan of track output
+            [track7Player setPan:[self.tracks[trackNumber] trackPan]];
+            
+            // play sample if the track is not muted
+            if(![self.tracks[trackNumber] muted]){
+                [track7Player play];
+            }
+            break;
+            
+        case 8:
+            // Remake the AVAudioPlayer; this prevents sluggish response
+            metronomePlayer =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
+            
+            // set volume output of track
+            
+            [metronomePlayer setVolume:(self.masterVolume)];
+            
+            // play sample if the track is not muted
+            [metronomePlayer play];
+            
+            break;
+        default:
+            break;
+    }
+
 
 }
 

@@ -102,12 +102,13 @@
 - (IBAction)togglePlayButton:(id)sender {
     if(!self.sequencerModel.play){
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
-        
+        [self.sequencerModel startPlayback];
+        self.sequencerModel.play = YES;
     }
     else {
         [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self stopPlaying];
     }
-    self.sequencerModel.play = !self.sequencerModel.play;
 }
 
 
@@ -126,25 +127,28 @@
     
     if(!self.sequencerModel.metronome){
         [self.metronomeButton setImage:[UIImage imageNamed:@"metronome_active.png"] forState:UIControlStateNormal];
-        
+        [self.sequencerModel setMetronome:YES];
     }
     else {
         [self.metronomeButton setImage:[UIImage imageNamed:@"metronome.png"] forState:UIControlStateNormal];
+        [self.sequencerModel setMetronome:NO];
     }
-    self.sequencerModel.metronome = !self.sequencerModel.metronome;
 }
 
 - (IBAction)pauseButtonPressed:(id)sender {
     [self stopPlaying];
 }
 
-- (IBAction)playButtonPressed:(id)sender {
+- (IBAction)stopButtonPressed:(id)sender {
     [self stopPlaying];
 }
 
 - (void) stopPlaying{
-    self.sequencerModel.play = NO;
-    [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    if(self.sequencerModel.play){
+        self.sequencerModel.play = NO;
+        [self.playButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self.sequencerModel stopPlayback];
+    }
 }
 
 

@@ -1,8 +1,8 @@
 //
-//  MixerTrackCollectionViewCell.h
+//  StepCollectionViewCell.h
 //  RedBeatMachine
 //
-//  Created by LJ on 5/4/16.
+//  Created by LJ on 5/6/16.
 //  Copyright © 2016 Jerry Webb. All rights reserved.
 //  This holds one public method that allows the cell to be created and formated when the collection view is created
 
@@ -10,8 +10,7 @@
 #import "TrackModel.h"
 
 
-@interface MixerTrackCollectionViewCell : UICollectionViewCell
+@interface StepCollectionViewCell : UICollectionViewCell
 
-- (void) setupCell: (TrackModel *) track : (NSInteger) trackNumber;
-
+- (void) setupCell: (TrackModel *) track : (NSInteger) num: (NSInteger) beatNumber;
 @end

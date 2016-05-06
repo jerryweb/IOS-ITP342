@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StepSequencerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>{
-    IBOutlet UICollectionView *trackNameAndSequenceCollectionView;
-}
+@interface StepSequencerViewController : UIViewController 
 
 @end
