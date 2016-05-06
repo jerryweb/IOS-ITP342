@@ -20,5 +20,6 @@
 + (instancetype) sharedModel;
 - (void) startPlayback;
 - (void) stopPlayback;
+- (void) recordHit: (NSInteger) index;
 
 @end

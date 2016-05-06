@@ -115,12 +115,12 @@
 - (IBAction)toggleRecordButton:(id)sender {
     if(!self.sequencerModel.record){
         [self.recordButton setImage:[UIImage imageNamed:@"recordActive.png"] forState:UIControlStateNormal];
-        
+        self.sequencerModel.record = YES;
     }
     else {
         [self.recordButton setImage:[UIImage imageNamed:@"record.png"] forState:UIControlStateNormal];
+        self.sequencerModel.record = NO;
     }
-    self.sequencerModel.record = !self.sequencerModel.record;
 }
 
 - (IBAction)toggleMetronomeButton:(id)sender {
@@ -190,35 +190,46 @@
 
 - (IBAction)triggerPad0:(id)sender {
     [self.tracksSingleton playTrackSample:0];
+    [self.sequencerModel recordHit:0];
 }
 
 - (IBAction)triggerPad1:(id)sender {
     [self.tracksSingleton playTrackSample:1];
+    [self.sequencerModel recordHit:1];
+
 }
 
 - (IBAction)triggerPad2:(id)sender {
     [self.tracksSingleton playTrackSample:2];
+    [self.sequencerModel recordHit:2];
+
 }
 
 - (IBAction)triggerPad3:(id)sender {
     [self.tracksSingleton playTrackSample:3];
+    [self.sequencerModel recordHit:3];
 
 }
 
 - (IBAction)triggerPad4:(id)sender {
     [self.tracksSingleton playTrackSample:4];
+    [self.sequencerModel recordHit:4];
 }
 
 - (IBAction)triggerPad5:(id)sender {
     [self.tracksSingleton playTrackSample:5];
+    [self.sequencerModel recordHit:5];
 }
 
 - (IBAction)triggerPad6:(id)sender {
     [self.tracksSingleton playTrackSample:6];
+    [self.sequencerModel recordHit:6];
+
 }
 
 - (IBAction)triggerPad7:(id)sender {
     [self.tracksSingleton playTrackSample:7];
+    [self.sequencerModel recordHit:7];
 }
 
 

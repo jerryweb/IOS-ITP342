@@ -16,6 +16,7 @@
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
 
 @property (nonatomic) NSThread *sequencerThread;    // This is used to paly the pattern back at a given bpm. The thread will run in the background and trigger any samples that are TRUE during that beat time step. The thread is initiated by the play button and stopped when the pause or stop button is pressed.
+@property (nonatomic) NSInteger currentStep;
 
 @end
 @implementation SequencerModel
@@ -70,9 +71,15 @@ dispatch_semaphore_t playSemaphore;     // This allows the thread running the se
     return self;
 }
 
+
+
+
+#pragma mark - play the pattern using the thread and semaphores
+
 - (void) playSequence {
 
         for (int i = 0; i < 16; i++) {
+            self.currentStep = i;
             dispatch_semaphore_wait(bpmSemaphore, DISPATCH_TIME_FOREVER);
             
             if(self.metronome){
@@ -80,8 +87,6 @@ dispatch_semaphore_t playSemaphore;     // This allows the thread running the se
             }
             
             NSMutableArray *row = self.steps2DArray[i];
-            NSLog(@"kicking = %@", row[0]);
-            NSLog(@"tome = %@", row[1]);
 
             if([row[0]  boolValue]){
                 [self.tracksSingleton playTrackSample:0];
@@ -114,8 +119,6 @@ dispatch_semaphore_t playSemaphore;     // This allows the thread running the se
             if([row[7] boolValue]){
                 [self.tracksSingleton playTrackSample:7];
             }
-            
-                   
                    
             dispatch_semaphore_signal(bpmSemaphore);
             usleep(60000000/(self.bpm *4));
@@ -123,6 +126,14 @@ dispatch_semaphore_t playSemaphore;     // This allows the thread running the se
                 i = -1;
             }
         }
+}
+
+- (void) recordHit: (NSInteger) index{
+    if(self.record){
+        NSMutableArray *row = self.steps2DArray[self.currentStep];
+        row[index] = @"YES";
+        [self.steps2DArray replaceObjectAtIndex:self.currentStep withObject:row];
+    }
 }
 
 
