@@ -8,7 +8,6 @@
 
 #import "MixerTrackCollectionViewCell.h"
 #import "TracksSingleton.h"
-//#import "SequencerModel.h"
 
 @interface MixerTrackCollectionViewCell()
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
@@ -84,7 +83,7 @@
 }
 
 
-// This sends a command to the trackSinglton to change this mixerTrack's corresponding audio track's volume
+// This sends a command to the trackSinglton to change this mixerTrack's corresponding audio track's pan
 - (IBAction)modifyTrackPan:(id)sender {
     [self.tracksSingleton modifyTrackPan:self.mixerTrackNumber :self.panSlider.value];
 }

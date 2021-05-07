@@ -52,6 +52,8 @@
     else{
         [self.playButton setImage:[UIImage imageNamed:@"play_active.png"] forState:UIControlStateNormal];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

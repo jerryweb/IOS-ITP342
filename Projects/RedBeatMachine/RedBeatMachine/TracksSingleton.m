@@ -9,12 +9,13 @@
 #import "TracksSingleton.h"
 #import "TrackModel.h"
 #import "SequencerModel.h"
-#import <AudioToolbox/AudioToolbox.h>
+//#import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 //#import <Firebase/Firebase.h>
 
 
 @interface TracksSingleton(){
+    
     AVAudioPlayer *track0Player;
     AVAudioPlayer *track1Player;
     AVAudioPlayer *track2Player;
@@ -24,7 +25,6 @@
     AVAudioPlayer *track6Player;
     AVAudioPlayer *track7Player;
     AVAudioPlayer *metronomePlayer;
-
 
 }
 
@@ -87,14 +87,14 @@
     NSDictionary *sound_6 = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bngo_3", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_7 = [[NSDictionary alloc] initWithObjectsAndKeys:@"Perfect 808", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_8 = [[NSDictionary alloc] initWithObjectsAndKeys:@"2uicksilver 808 single", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
-    NSDictionary *sound_9 = [[NSDictionary alloc] initWithObjectsAndKeys:@"lex_rim", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
+    NSDictionary *sound_9 = [[NSDictionary alloc] initWithObjectsAndKeys:@"Lex Rim(2)", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_10 = [[NSDictionary alloc] initWithObjectsAndKeys:@"CB_Hat", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_11 = [[NSDictionary alloc] initWithObjectsAndKeys:@"CB_Kick", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
     NSDictionary *sound_12 = [[NSDictionary alloc] initWithObjectsAndKeys:@"vybe809Kick", kSampleNameKey, @"wav", kSampleFileTypeKey,nil];
 
 
     
-    _listOfSamples = [[NSMutableArray alloc] initWithObjects:sound_0, sound_1, sound_2, sound_3, sound_4, sound_5, sound_6, sound_7, sound_8, sound_9, sound_10, sound_11, sound_12, nil];
+    _listOfSamples = [[NSMutableArray alloc] initWithObjects:sound_0, sound_1, sound_2, sound_3, sound_4, sound_5, sound_6, sound_7, sound_8, sound_9, sound_10, sound_11, sound_12,nil];
 }
 
 // Create 8 track objects and add them to an array
@@ -174,7 +174,7 @@
     NSString *trackFilePath;
     NSURL *trackURL;
     if(trackNumber == 8){
-        trackFilePath = [[NSBundle mainBundle]pathForResource:@"lex_rim" ofType:@"wav"];
+        trackFilePath = [[NSBundle mainBundle]pathForResource:@"LEX Rim(2)" ofType:@"wav"];
         trackURL = [NSURL fileURLWithPath:trackFilePath];
     }
     else{

@@ -51,7 +51,11 @@
     [self updateTrackNames];
     [self setupMuteButtons];
 
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateTrackNames];
+    [self setupMuteButtons];
 }
 
 #pragma mark - refreshing view methods

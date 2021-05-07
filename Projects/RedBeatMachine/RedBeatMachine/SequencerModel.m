@@ -15,7 +15,7 @@
 @property (nonatomic) NSInteger numberOfSteps;      // This should a be a multiple of 16 * the total number of tracks e.g. 8 * 16 = 128
 @property (strong, nonatomic) TracksSingleton *tracksSingleton;
 
-@property (nonatomic) NSThread *sequencerThread;    // This is used to paly the pattern back at a given bpm. The thread will run in the background and trigger any samples that are TRUE during that beat time step. The thread is initiated by the play button and stopped when the pause or stop button is pressed.
+@property (nonatomic) NSThread *sequencerThread;    // This is used to play the pattern back at a given bpm. The thread will run in the background and trigger any samples that are TRUE during that beat time step. The thread is initiated by the play button and stopped when the pause or stop button is pressed.
 @property (nonatomic) NSInteger currentStep;
 
 @end
@@ -82,7 +82,7 @@ dispatch_semaphore_t playSemaphore;     // This allows the thread running the se
             self.currentStep = i;
             dispatch_semaphore_wait(bpmSemaphore, DISPATCH_TIME_FOREVER);
             
-            if(self.metronome){
+            if(self.metronome && i % 4 == 0){
                 [self.tracksSingleton playTrackSample:8];
             }
             
@@ -92,17 +92,17 @@ dispatch_semaphore_t playSemaphore;     // This allows the thread running the se
                 [self.tracksSingleton playTrackSample:0];
             }
             if([row[1] boolValue]){
-                NSLog(@"track 1 of i = %d", i);
+//                NSLog(@"track 1 of i = %d", i);
 
                 [self.tracksSingleton playTrackSample:1];
             }
             if([row[2] boolValue]){
-                NSLog(@"track 2 of i = %d", i);
+//                NSLog(@"track 2 of i = %d", i);
 
                 [self.tracksSingleton playTrackSample:2];
             }
             if([row[3] boolValue]){
-                NSLog(@"track 3 of i = %d", i);
+//                NSLog(@"track 3 of i = %d", i);
 
                 [self.tracksSingleton playTrackSample:3];
             }
