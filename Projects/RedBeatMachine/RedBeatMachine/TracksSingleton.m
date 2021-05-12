@@ -25,6 +25,10 @@
     AVAudioPlayer *track6Player;
     AVAudioPlayer *track7Player;
     AVAudioPlayer *metronomePlayer;
+    
+    AVAudioEngine *avMixer;
+    AVAudioNode *trackNode0;
+    AVAudioUnitTimePitch *trackPitch0;
 
 }
 
@@ -75,6 +79,14 @@
     return self;
 
 }
+
+- (void) generateAVAudioMixer {
+    
+    trackNode0.
+    
+    
+}
+
 
 // Create an array of dictionary objects which hold the sample name and file type such as wav or mp3
 - (void) generateListOfSounds{
@@ -185,6 +197,11 @@
     
     switch (trackNumber) {
         case 0:
+            
+            
+            
+            
+            
             // Remake the AVAudioPlayer; this prevents sluggish response
             track0Player =[[AVAudioPlayer alloc] initWithContentsOfURL:trackURL error:NULL];
             [track0Player stop];
